@@ -11,7 +11,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React, { FC, useState } from "react";
+import React, { FC,  useState } from "react";
 import { FilterInput } from "./FilterInput";
 import { useDebounce } from "react-use";
 import { chikumaData } from "@/type";
@@ -29,7 +29,7 @@ export const ChikumaTable: FC<Props> = ({ data }) => {
         data?.filter((value) => value.品番.includes(filterProductNumber))
       );
     },
-    1000,
+    100,
     [filterProductNumber]
   );
 

@@ -15,12 +15,12 @@ const fileParser = (csvData: string) => {
   return result.data as chikumaData[];
 };
 
-export default async function Home() {
+export default async function Home({posts}:any) {
   const data = await getCsv();
-
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
       大丸白衣
     </main>
   );
 }
+

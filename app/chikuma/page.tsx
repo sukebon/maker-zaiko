@@ -3,6 +3,7 @@ import { CatalogArea } from "@/components/CatalogArea";
 import { ChikumaTable } from "@/components/ChikumaTable";
 import { chikumaData } from "@/type";
 import axios from "axios";
+import { GetStaticProps } from "next";
 import { parse } from "papaparse";
 
 const getCsv = async () => {
@@ -36,6 +37,7 @@ const getCatalog = async (id: string) => {
 };
 
 export default async function Chikuma() {
+
   const data = await getCsv();
   const catalogSS = await getCatalog("easbbej1r");
   const catalogAW = await getCatalog("8twgzvvvs");
@@ -52,3 +54,14 @@ export default async function Chikuma() {
     </main>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  
+  const res = await fetch(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv"
+  );
+  const posts = fileParser(await res.text());
+  console.log("posts")
+  return { props: { posts }, revalidate: 60 };
+};
+

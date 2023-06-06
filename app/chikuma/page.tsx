@@ -6,10 +6,15 @@ import axios from "axios";
 import { parse } from "papaparse";
 
 const getCsv = async () => {
-  const res = await axios.get<string>(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv"
+  const res = await fetch(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv",
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
-  const result = fileParser(res.data);
+  const result = fileParser(await res.text());
   return result;
 };
 

@@ -8,7 +8,6 @@ type Props = {
 };
 
 export const Catalog: FC<Props> = ({ catalogData }) => {
-  console.log(catalogData);
   return (
     <div className="w-11/12 lg:w-32">
       <Link href={catalogData.link} target="_blank" rel="noopener noreferrer">

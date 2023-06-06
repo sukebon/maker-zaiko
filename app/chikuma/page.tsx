@@ -55,13 +55,4 @@ export default async function Chikuma() {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  
-  const res = await fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv"
-  );
-  const posts = fileParser(await res.text());
-  console.log("posts")
-  return { props: { posts }, revalidate: 60 };
-};
 

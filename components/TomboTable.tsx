@@ -14,10 +14,10 @@ import {
 import React, { FC, useState } from "react";
 import { FilterInput } from "./FilterInput";
 import { useDebounce } from "react-use";
-import { chikumaData } from "@/type";
+import { tombowData } from "@/type";
 
 type Props = {
-  data: chikumaData[];
+  data: tombowData[];
 };
 
 export const TomboTable: FC<Props> = ({ data }) => {
@@ -33,7 +33,7 @@ export const TomboTable: FC<Props> = ({ data }) => {
     [filterProductNumber]
   );
 
-  const [filterData, setFilterData] = useState<chikumaData[]>([]);
+  const [filterData, setFilterData] = useState<tombowData[]>([]);
 
   return (
     <Providers>
@@ -54,26 +54,18 @@ export const TomboTable: FC<Props> = ({ data }) => {
                 <Thead position="sticky" top={0} zIndex="docked" bg="white">
                   <Tr>
                     <Th>品番</Th>
+                    <Th>色</Th>
                     <Th>サイズ</Th>
-                    <Th>現物在庫</Th>
-                    <Th>入荷検品中</Th>
-                    <Th>加工納期1</Th>
-                    <Th>加工品1</Th>
-                    <Th>加工納期2</Th>
-                    <Th>加工品2</Th>
+                    <Th>在庫数</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {filterData?.map((data: chikumaData, index: number) => (
+                  {filterData?.map((data: tombowData, index: number) => (
                     <Tr key={index}>
                       <Td>{data.品番}</Td>
-                      <Td>{data.サイズ}</Td>
-                      <Td isNumeric>{data.現物在庫}</Td>
-                      <Td isNumeric>{data.入荷検品中}</Td>
-                      <Td>{data.加工品納期１ !== data.加工品納期１}</Td>
-                      <Td isNumeric>{data.加工品数量１}</Td>
-                      <Td>{data.加工品納期２ !== data.加工品納期２}</Td>
-                      <Td isNumeric>{data.加工品数量２}</Td>
+                      <Td>{data.色}</Td>
+                      <Td>{data.サイズ略称}</Td>
+                      <Td isNumeric>{data.在庫数}</Td>
                     </Tr>
                   ))}
                 </Tbody>

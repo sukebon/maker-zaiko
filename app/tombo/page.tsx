@@ -1,13 +1,18 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { TomboTable } from "@/components/TomboTable";
-import { chikumaData } from "@/type";
+import { tombowData } from "@/type";
 import axios from "axios";
 import { parse } from "papaparse";
 
 const getCsv = async () => {
   const res = await fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv"
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=1777356817&single=true&output=csv",
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
   const result = fileParser(await res.text());
   return result;
@@ -15,7 +20,7 @@ const getCsv = async () => {
 
 const fileParser = (csvData: string) => {
   const result = parse(csvData, { header: true });
-  return result.data as chikumaData[];
+  return result.data as tombowData[];
 };
 
 const getCatalog = async (id: string) => {

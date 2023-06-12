@@ -8,3 +8,10 @@ export type chikumaData = {
     加工品納期２: string;
     加工品数量２: string;
   };
+
+  export type tombowData = {
+    品番: string;
+    色:string;
+    サイズ略称: string;
+    在庫数: string;
+  };

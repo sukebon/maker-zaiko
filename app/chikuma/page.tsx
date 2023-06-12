@@ -41,7 +41,6 @@ export default async function Chikuma() {
   const catalogSS = await getCatalog("easbbej1r");
   const catalogAW = await getCatalog("8twgzvvvs");
   const catalogFL = await getCatalog("1hfh1ntic");
-
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
       <ChikumaTable data={data} />

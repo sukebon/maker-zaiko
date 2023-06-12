@@ -34,7 +34,6 @@ export const ChikumaTable: FC<Props> = ({ data }) => {
   );
 
   const [filterData, setFilterData] = useState<chikumaData[]>([]);
-
   return (
     <Providers>
       <Flex direction="column" alignItems="center" w="full">
@@ -70,9 +69,9 @@ export const ChikumaTable: FC<Props> = ({ data }) => {
                       <Td>{data.サイズ}</Td>
                       <Td isNumeric>{data.現物在庫}</Td>
                       <Td isNumeric>{data.入荷検品中}</Td>
-                      <Td>{data.加工品納期１ !== data.加工品納期１}</Td>
+                      <Td>{data.加工品納期１ !== "0" && data.加工品納期１}</Td>
                       <Td isNumeric>{data.加工品数量１}</Td>
-                      <Td>{data.加工品納期２ !== data.加工品納期２}</Td>
+                      <Td>{data.加工品納期２ !== "0" && data.加工品納期２}</Td>
                       <Td isNumeric>{data.加工品数量２}</Td>
                     </Tr>
                   ))}

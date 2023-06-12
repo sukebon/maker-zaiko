@@ -54,7 +54,6 @@ export const TomboTable: FC<Props> = ({ data }) => {
                 <Thead position="sticky" top={0} zIndex="docked" bg="white">
                   <Tr>
                     <Th>品番</Th>
-                    <Th>色</Th>
                     <Th>サイズ</Th>
                     <Th>在庫数</Th>
                   </Tr>
@@ -63,8 +62,7 @@ export const TomboTable: FC<Props> = ({ data }) => {
                   {filterData?.map((data: tombowData, index: number) => (
                     <Tr key={index}>
                       <Td>{data.品番}</Td>
-                      <Td>{data.色}</Td>
-                      <Td>{data.サイズ略称}</Td>
+                      <Td>{data.サイズ}</Td>
                       <Td isNumeric>{data.在庫数}</Td>
                     </Tr>
                   ))}

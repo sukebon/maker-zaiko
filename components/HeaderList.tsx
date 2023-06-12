@@ -11,7 +11,7 @@ export const HeaderList: FC = () => {
   const list = [
     { title: "大丸白衣", link: "/" },
     { title: "ALPHA PIER　FELLOWS", link: "/chikuma" },
-    { title: "KIRAKU", link: "/tombo" },
+    { title: "KIRAKU", link: "/tombow" },
   ];
 
   return <>{list.map(({ title, link }) => buttonEL(title, link))}</>;

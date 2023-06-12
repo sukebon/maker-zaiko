@@ -11,7 +11,7 @@ export type chikumaData = {
 
   export type tombowData = {
     品番: string;
-    色:string;
-    サイズ略称: string;
+  //  色:string; 
+    サイズ: string;
     在庫数: string;
   };

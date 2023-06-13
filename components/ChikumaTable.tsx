@@ -11,35 +11,35 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React, { FC,  useState } from "react";
+import React, { FC, useState } from "react";
 import { FilterInput } from "./FilterInput";
-import { useDebounce } from "react-use";
 import { chikumaData } from "@/type";
 
 type Props = {
   data: chikumaData[];
+  datalist: string[];
 };
 
-export const ChikumaTable: FC<Props> = ({ data }) => {
-  const [filterProductNumber, setFilterProductNumber] = useState("");
-
-  const [, cancel] = useDebounce(
-    () => {
-      setFilterData(
-        data?.filter((value) => value.品番.includes(filterProductNumber))
-      );
-    },
-    100,
-    [filterProductNumber]
-  );
-
+export const ChikumaTable: FC<Props> = ({ data, datalist }) => {
   const [filterData, setFilterData] = useState<chikumaData[]>([]);
+
+  const addArray = (productNumber:string) => {
+    const selectData = data.filter((d) => d.品番 === productNumber);
+    if(!selectData) return
+    setFilterData((prev:chikumaData[]) => {
+      const newData = [...prev, ...selectData];
+      return newData;
+    });
+  };
+
   return (
     <Providers>
       <Flex direction="column" alignItems="center" w="full">
         <FilterInput
           title="ALPHA PIER / FELLOWS"
-          setFilterProductNumber={setFilterProductNumber}
+          setFilterData={setFilterData}
+          datalist={datalist}
+          addArray={addArray}
         />
         {filterData.length > 0 && (
           <TableContainer mt={6} overflowX="unset" overflowY="unset">

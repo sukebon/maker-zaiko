@@ -1,7 +1,6 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { TomboTable } from "@/components/TomboTable";
-import { tombowData } from "@/type";
 import axios from "axios";
 import { parse } from "papaparse";
 
@@ -52,11 +51,13 @@ const getCatalog = async (id: string) => {
 
 export default async function Chikuma() {
   const data = await getCsv();
+  const newData = data.map((d) => d.品番);
+  const datalist = Array.from(new Set(newData));
   const catalog = await getCatalog("pecptt28f");
 
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
-      <TomboTable data={data} />
+      <TomboTable data={data} datalist={datalist} />
       <CatalogArea>
         <Catalog catalogData={catalog} />
       </CatalogArea>

@@ -1,4 +1,5 @@
 "use client";
+import { chikumaData, tombowData } from "@/type";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -7,7 +8,7 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -16,10 +17,26 @@ type Inputs = {
 
 type Props = {
   title: string;
-  setFilterProductNumber: Function;
+  setFilterData:
+    | React.Dispatch<React.SetStateAction<chikumaData[]>>
+    | React.Dispatch<React.SetStateAction<tombowData[]>>;
+  datalist: string[];
+  addArray: Function;
 };
 
-export const FilterInput: FC<Props> = ({ title, setFilterProductNumber }) => {
+export const FilterInput: FC<Props> = ({
+  title,
+  setFilterData,
+  datalist,
+  addArray,
+}) => {
+  const [placeholderArray, setPlaceholderArray] = useState<string[]>([]);
+  const addPlaceholder = (productNumber: string) => {
+    setPlaceholderArray((prev: string[]) => {
+      const newArray = [...prev, productNumber].filter((_) => _ !== "");
+      return newArray;
+    });
+  };
   const {
     register,
     handleSubmit,
@@ -31,43 +48,68 @@ export const FilterInput: FC<Props> = ({ title, setFilterProductNumber }) => {
     },
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data.text);
-    setFilterProductNumber(data.text);
+    addPlaceholder(data.text);
+    addArray(data.text);
+    reset();
   };
 
   const onReset = () => {
     reset();
+    setPlaceholderArray([]);
+    setFilterData([]);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
       <Flex
         mt={6}
+        px={6}
         w="full"
         justifyContent="center"
         alignItems="center"
         direction="column"
       >
         <Box fontSize="2xl">{title}</Box>
-        <Flex gap={2} mt={6}>
-          <InputGroup w="full" maxW="350px">
+        <Flex
+          w="full"
+          maxW="650px"
+          gap={3}
+          mt={6}
+          direction={{ base: "column", md: "row" }}
+        >
+          <InputGroup w="full">
             <InputLeftElement pointerEvents="none">
               <SearchIcon color="gray.300" />
             </InputLeftElement>
-            <Input placeholder="品番を入力してください" {...register("text")} />
+            <Input
+              list="itemlist"
+              placeholder={
+                placeholderArray.length > 0
+                  ? placeholderArray.join(",")
+                  : "品番を入力してください"
+              }
+              {...register("text")}
+            />
           </InputGroup>
-          <input
-            type="submit"
-            value="検索"
-            className="w-24 text-sm bg-blue-800 text-white rounded cursor-pointer	"
-          />
-          <button
-            value="検索"
-            className="w-24 bg-gray-500 text-sm text-white rounded cursor-pointer"
-            onClick={onReset}
-          >
-            リセット
-          </button>
+          <datalist id="itemlist">
+            {datalist.map((data) => (
+              <option key={data}>{data}</option>
+            ))}
+          </datalist>
+          <Flex gap={3} w={{base:"full",md:"auto"}}>
+            <input
+              type="submit"
+              value="検索"
+              className="w-24 text-sm bg-blue-800 text-white rounded cursor-pointer w-full md:w-24"
+            />
+            <button
+              value="検索"
+              className="w-24 bg-gray-500 text-sm text-white rounded cursor-pointer w-full md:w-24"
+              onClick={onReset}
+            >
+              リセット
+            </button>
+          </Flex>
         </Flex>
       </Flex>
     </form>

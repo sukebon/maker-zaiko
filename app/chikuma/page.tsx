@@ -36,14 +36,15 @@ const getCatalog = async (id: string) => {
 };
 
 export default async function Chikuma() {
-
   const data = await getCsv();
+  const newData = data.map((d) => d.品番);
+  const datalist = Array.from(new Set(newData));
   const catalogSS = await getCatalog("easbbej1r");
   const catalogAW = await getCatalog("8twgzvvvs");
   const catalogFL = await getCatalog("1hfh1ntic");
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
-      <ChikumaTable data={data} />
+      <ChikumaTable data={data} datalist={datalist}/>
       <CatalogArea>
         <Catalog catalogData={catalogSS} />
         <Catalog catalogData={catalogAW} />
@@ -52,5 +53,3 @@ export default async function Chikuma() {
     </main>
   );
 }
-
-

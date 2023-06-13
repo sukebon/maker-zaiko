@@ -1,8 +1,5 @@
 import { Header } from "@/components/Header";
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,6 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <title>大丸白衣　メーカー在庫</title>
       <body className="relative min-h-screen">
         <Header/>
        {children}

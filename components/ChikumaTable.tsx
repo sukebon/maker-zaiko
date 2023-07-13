@@ -13,20 +13,20 @@ import {
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import { FilterInput } from "./FilterInput";
-import { chikumaData } from "@/type";
+import { ChikumaData } from "@/type";
 
 type Props = {
-  data: chikumaData[];
+  data: ChikumaData[];
   datalist: string[];
 };
 
 export const ChikumaTable: FC<Props> = ({ data, datalist }) => {
-  const [filterData, setFilterData] = useState<chikumaData[]>([]);
+  const [filterData, setFilterData] = useState<ChikumaData[]>([]);
 
-  const addArray = (productNumber:string) => {
+  const addArray = (productNumber: string) => {
     const selectData = data.filter((d) => d.品番 === productNumber);
-    if(!selectData) return
-    setFilterData((prev:chikumaData[]) => {
+    if (!selectData) return;
+    setFilterData((prev: ChikumaData[]) => {
       const newData = [...prev, ...selectData];
       return newData;
     });
@@ -63,7 +63,7 @@ export const ChikumaTable: FC<Props> = ({ data, datalist }) => {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {filterData?.map((data: chikumaData, index: number) => (
+                  {filterData?.map((data: ChikumaData, index: number) => (
                     <Tr key={index}>
                       <Td>{data.品番}</Td>
                       <Td>{data.サイズ}</Td>

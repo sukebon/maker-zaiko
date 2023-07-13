@@ -1,4 +1,4 @@
-import { chikumaData } from "@/type";
+import { ChikumaData } from "@/type";
 import axios from "axios";
 import { parse } from "papaparse";
 

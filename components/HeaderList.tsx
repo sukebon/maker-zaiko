@@ -16,6 +16,7 @@ export const HeaderList: FC = () => {
     { title: "大丸白衣", link: "/" },
     { title: "ALPHA PIER　FELLOWS", link: "/chikuma" },
     { title: "KIRAKU", link: "/tombow" },
+    { title: "UNITE/Arbe", link: "/chitose" },
   ];
 
   return (

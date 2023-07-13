@@ -49,7 +49,7 @@ const getCatalog = async (id: string) => {
   return res.data;
 };
 
-export default async function Chikuma() {
+export default async function Tombow() {
   const data = await getCsv();
   const newData = data.map((d) => d.品番);
   const datalist = Array.from(new Set(newData));

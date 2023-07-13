@@ -1,7 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { ChikumaTable } from "@/components/ChikumaTable";
-import { chikumaData } from "@/type";
+import { ChikumaData } from "@/type";
 import axios from "axios";
 import { parse } from "papaparse";
 
@@ -20,7 +20,7 @@ const getCsv = async () => {
 
 const fileParser = (csvData: string) => {
   const result = parse(csvData, { header: true });
-  return result.data as chikumaData[];
+  return result.data as ChikumaData[];
 };
 
 const getCatalog = async (id: string) => {

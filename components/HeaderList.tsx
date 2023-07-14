@@ -13,16 +13,22 @@ export const HeaderList: FC = () => {
     </button>
   );
   const list = [
-    { title: "大丸白衣", link: "/" },
-    { title: "ALPHA PIER　FELLOWS", link: "/chikuma" },
-    { title: "KIRAKU", link: "/tombow" },
-    { title: "UNITE/Arbe", link: "/chitose" },
+    { title: "大丸白衣", link: "/", blank: false },
+    { title: "ALPHA PIER　FELLOWS", link: "/chikuma", blank: false },
+    { title: "KIRAKU", link: "/tombow", blank: false },
+    { title: "UNITE/Arbe", link: "/chitose", blank: false },
+    { title: "Printstar", link: "https://tomsj.com/brand/stock/", blank: true },
   ];
 
   return (
     <>
-      {list.map(({ title, link }, index) => (
-        <Link key={index} href={link}>
+      {list.map(({ title, link, blank }, index) => (
+        <Link
+          key={index}
+          href={link}
+          target={blank ? "_blank" : "_self"}
+          rel="noopener noreferrer"
+        >
           {buttonEL(title, link)}
         </Link>
       ))}

@@ -30,20 +30,28 @@ const getCsv = async () => {
   );
 
   const datalist = fileParser(await res.text());
-  const result = datalist.map((data: csvImport) => ({
-    品番: `${data.品番} ${data.カラー名}`,
-    品名: data.品名,
-    カラー名: data.カラー名,
-    サイズ名: data.サイズ名,
-    在庫数: data.在庫数,
-    外部倉庫在庫数: data.外部倉庫在庫数,
-    仕掛１日付: data.仕掛１日付,
-    仕掛１数量: data.仕掛１数量,
-    仕掛２日付: data.仕掛２日付,
-    仕掛２数量: data.仕掛２数量,
-    仕掛３日付: data.仕掛３日付,
-    仕掛３数量: data.仕掛３数量,
-  }));
+  const result = datalist.map((data: csvImport) => {
+    const pattern = /(C|-|\/|\s)/g;
+    const text = data.カラー名;
+    const newText = text.replace(pattern, "");
+    const array = newText.split(/[0-9]/);
+    const lastText = array.pop();
+    const colorText = newText.match(/[0-9]*/)?.shift();
+    return {
+      品番: newText !== "" ? `${data.品番}-${colorText} ${lastText}` : data.品番,
+      品名: data.品名,
+      カラー名: data.カラー名,
+      サイズ名: data.サイズ名,
+      在庫数: data.在庫数,
+      外部倉庫在庫数: data.外部倉庫在庫数,
+      仕掛１日付: data.仕掛１日付,
+      仕掛１数量: data.仕掛１数量,
+      仕掛２日付: data.仕掛２日付,
+      仕掛２数量: data.仕掛２数量,
+      仕掛３日付: data.仕掛３日付,
+      仕掛３数量: data.仕掛３数量,
+    };
+  });
   return result;
 };
 

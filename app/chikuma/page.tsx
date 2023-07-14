@@ -1,6 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { ChikumaTable } from "@/components/ChikumaTable";
+import { HeaderDrawer } from "@/components/HeaderDrawer";
 import { ChikumaData } from "@/type";
 import axios from "axios";
 import { parse } from "papaparse";

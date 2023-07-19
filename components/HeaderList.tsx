@@ -13,7 +13,7 @@ export const HeaderList: FC = () => {
     </button>
   );
   const list = [
-    { title: "大丸白衣", link: "/", blank: false },
+    { title: "大丸白衣", link: "/daimaru", blank: false },
     { title: "ALPHA PIER　FELLOWS", link: "/chikuma", blank: false },
     { title: "KIRAKU", link: "/tombow", blank: false },
     { title: "UNITE/Arbe", link: "/chitose", blank: false },

@@ -30,3 +30,16 @@ export type ChikumaData = {
     仕掛３日付:string;
     仕掛３数量:string;
   }
+
+  export type DaimaruData = {
+    品番: string;
+    商品名: string;
+    サイズ: string;
+    在庫数: string;
+    徳島在庫: string;
+    外部在庫: string;
+    TOTAL: string;
+    受注残: string;
+    予約: string;
+    仕掛: string;
+  };

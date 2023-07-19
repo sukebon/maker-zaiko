@@ -1,5 +1,5 @@
 "use client";
-import { ChikumaData, TombowData,ChitoseData } from "@/type";
+import { DaimaruData,ChikumaData, TombowData,ChitoseData } from "@/type";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -20,7 +20,8 @@ type Props = {
   setFilterData:
     | React.Dispatch<React.SetStateAction<ChikumaData[]>>
     | React.Dispatch<React.SetStateAction<TombowData[]>>
-    | React.Dispatch<React.SetStateAction<ChitoseData[]>>;
+    | React.Dispatch<React.SetStateAction<ChitoseData[]>>
+    | React.Dispatch<React.SetStateAction<DaimaruData[]>>;
   datalist: string[];
   addArray: Function;
 };

@@ -1,9 +1,8 @@
-import { ChikumaData } from "@/type";
-import axios from "axios";
-import { parse } from "papaparse";
+import { redirect } from 'next/navigation'
 
 
-export default async function Home({posts}:any) {
+export default async function Home() {
+  redirect('/daimaru')
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
       大丸白衣

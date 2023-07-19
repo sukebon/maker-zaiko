@@ -17,7 +17,8 @@ export const HeaderList: FC = () => {
     { title: "ALPHA PIER　FELLOWS", link: "/chikuma", blank: false },
     { title: "KIRAKU", link: "/tombow", blank: false },
     { title: "UNITE/Arbe", link: "/chitose", blank: false },
-    { title: "Printstar", link: "https://tomsj.com/brand/stock/", blank: true },
+    { title: "Printstar", link: "/toms", blank: false },
+    // { title: "Printstar", link: "https://tomsj.com/brand/stock/", blank: true },
   ];
 
   return (

@@ -16,6 +16,7 @@ export const Catalog: FC<Props> = ({ catalogData }) => {
           width={300}
           height={300}
           alt={catalogData.maker}
+          
         />
       </Link>
     </div>

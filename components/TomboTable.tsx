@@ -47,8 +47,8 @@ export const TomboTable: FC<Props> = ({ data ,datalist}) => {
             <Box
               overflowX="auto"
               position="relative"
-              maxW="1000px"
-              maxH="calc(100vh - 200px)"
+              maxW="900px"
+              maxH="calc(100vh - 230px)"
             >
               <Table size="sm" variant="simple" bg="white">
                 <Thead position="sticky" top={0} zIndex="docked" bg="white">

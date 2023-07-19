@@ -55,12 +55,12 @@ export const DaimaruTable: FC<Props> = ({ data, datalist }) => {
                     <Th>品番</Th>
                     <Th>サイズ</Th>
                     <Th>在庫数</Th>
-                    <Th>徳島在庫</Th>
-                    <Th>外部在庫</Th>
+                    <Th>外部在庫1</Th>
+                    <Th>外部在庫2</Th>
                     <Th>TOTAL</Th>
-                    <Th>受注残</Th>
+                    {/* <Th>受注残</Th>
                     <Th>予約キープ</Th>
-                    <Th>仕掛</Th>
+                    <Th>仕掛</Th> */}
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -72,9 +72,9 @@ export const DaimaruTable: FC<Props> = ({ data, datalist }) => {
                       <Td isNumeric>{data.徳島在庫}</Td>
                       <Td isNumeric>{data.外部在庫}</Td>
                       <Td isNumeric>{data.TOTAL}</Td>
-                      <Td isNumeric>{data.受注残}</Td>
+                      {/* <Td isNumeric>{data.受注残}</Td>
                       <Td isNumeric>{data.予約}</Td>
-                      <Td isNumeric>{data.仕掛}</Td>
+                      <Td isNumeric>{data.仕掛}</Td> */}
                     </Tr>
                   ))}
                 </Tbody>

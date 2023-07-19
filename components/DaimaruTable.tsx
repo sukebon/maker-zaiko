@@ -53,7 +53,6 @@ export const DaimaruTable: FC<Props> = ({ data, datalist }) => {
                 <Thead position="sticky" top={0} zIndex="docked" bg="white">
                   <Tr>
                     <Th>品番</Th>
-                    <Th>商品名</Th>
                     <Th>サイズ</Th>
                     <Th>在庫数</Th>
                     <Th>徳島在庫</Th>

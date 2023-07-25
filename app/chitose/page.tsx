@@ -22,11 +22,7 @@ type csvImport = {
 const getCsv = async () => {
   const res = await fetch(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=1044185695&single=true&output=csv",
-    {
-      next: {
-        revalidate: 10,
-      },
-    }
+    { cache: 'no-store' }
   );
 
   const datalist = fileParser(await res.text());

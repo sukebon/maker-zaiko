@@ -1,7 +1,6 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { ChikumaTable } from "@/components/ChikumaTable";
-import { HeaderDrawer } from "@/components/HeaderDrawer";
 import { ChikumaData } from "@/type";
 import axios from "axios";
 import { parse } from "papaparse";
@@ -11,7 +10,7 @@ const getCsv = async () => {
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv",
     {
       next: {
-        revalidate: 60,
+        revalidate: 10,
       },
     }
   );

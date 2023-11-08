@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import { FilterInput } from "./FilterInput";
-import { DaimaruData } from "@/type";
+import { DaimaruData } from "@/types";
 
 type Props = {
   data: DaimaruData[];

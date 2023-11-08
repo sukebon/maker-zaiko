@@ -1,5 +1,5 @@
 "use client";
-import { DaimaruData,ChikumaData, TombowData,ChitoseData } from "@/type";
+import { DaimaruData,ChikumaData, TombowData,ChitoseData } from "@/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,

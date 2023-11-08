@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import { FilterInput } from "./FilterInput";
-import { TombowData } from "@/type";
+import { TombowData } from "@/types";
 
 type Props = {
   data: TombowData[];

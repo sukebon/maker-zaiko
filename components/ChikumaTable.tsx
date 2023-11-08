@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import { FilterInput } from "./FilterInput";
-import { ChikumaData } from "@/type";
+import { ChikumaData } from "@/types";
 
 type Props = {
   data: ChikumaData[];

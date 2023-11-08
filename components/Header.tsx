@@ -1,13 +1,33 @@
-import React, { FC } from 'react'
-import { HeaderList } from './HeaderList'
-import { HeaderDrawer } from './HeaderDrawer'
+"use client";
+import React, { FC } from "react";
+import { HeaderList } from "./HeaderList";
+import { HeaderDrawer } from "./HeaderDrawer";
+import { signOut, useSession } from "next-auth/react";
 
-export const Header:FC = () => {
+export const Header: FC = () => {
+  const session = useSession();
+  const signOutHandler = () => {
+    signOut();
+  };
   return (
     <div className="flex justify-center sticky top-0 bg-blue-900 h-12 z-10 flex items-center">
-        {/* <div className='ml-3 text-white'>大丸白衣</div> */}
-        <div className="hidden lg:flex gap-3 justify-end mx-3"><HeaderList/></div>
-        <div className=''><HeaderDrawer/></div>
+      {/* <div className='ml-3 text-white'>大丸白衣</div> */}
+      <div className="w-full hidden lg:flex gap-3 justify-between mx-3">
+        <div className="flex gap-3 items-center">
+          <HeaderList />
+        </div>
+        {session.data?.user.uid && (
+          <div
+            className="flex items-center text-white text-sm cursor-pointer"
+            onClick={signOutHandler}
+          >
+            ログアウト
+          </div>
+        )}
+      </div>
+      <div className="">
+        <HeaderDrawer />
+      </div>
     </div>
-  )
-}
+  );
+};

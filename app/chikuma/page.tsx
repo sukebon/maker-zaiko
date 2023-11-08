@@ -1,7 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { ChikumaTable } from "@/components/ChikumaTable";
-import { ChikumaData } from "@/type";
+import { ChikumaData } from "@/types";
 import axios from "axios";
 import { parse } from "papaparse";
 

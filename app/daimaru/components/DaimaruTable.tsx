@@ -12,21 +12,21 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
-import { FilterInput } from "./FilterInput";
-import { ChikumaData } from "@/types";
+import { FilterInput } from "../../../components/FilterInput";
+import { DaimaruData } from "@/types";
 
 type Props = {
-  data: ChikumaData[];
+  data: DaimaruData[];
   datalist: string[];
 };
 
-export const ChikumaTable: FC<Props> = ({ data, datalist }) => {
-  const [filterData, setFilterData] = useState<ChikumaData[]>([]);
+export const DaimaruTable: FC<Props> = ({ data, datalist }) => {
+  const [filterData, setFilterData] = useState<DaimaruData[]>([]);
 
   const addArray = (productNumber: string) => {
     const selectData = data.filter((d) => d.品番 === productNumber);
     if (!selectData) return;
-    setFilterData((prev: ChikumaData[]) => {
+    setFilterData((prev: DaimaruData[]) => {
       const newData = [...prev, ...selectData];
       return newData;
     });
@@ -36,7 +36,7 @@ export const ChikumaTable: FC<Props> = ({ data, datalist }) => {
     <Providers>
       <Flex direction="column" alignItems="center" w="full">
         <FilterInput
-          title="ALPHA PIER / FELLOWS"
+          title="大丸白衣"
           setFilterData={setFilterData}
           datalist={datalist}
           addArray={addArray}
@@ -54,25 +54,27 @@ export const ChikumaTable: FC<Props> = ({ data, datalist }) => {
                   <Tr>
                     <Th>品番</Th>
                     <Th>サイズ</Th>
-                    <Th>現物在庫</Th>
-                    <Th>入荷検品中</Th>
-                    <Th>加工納期1</Th>
-                    <Th>加工品1</Th>
-                    <Th>加工納期2</Th>
-                    <Th>加工品2</Th>
+                    <Th>在庫数</Th>
+                    <Th>外部在庫1</Th>
+                    <Th>外部在庫2</Th>
+                    <Th>TOTAL</Th>
+                    {/* <Th>受注残</Th>
+                    <Th>予約キープ</Th>
+                    <Th>仕掛</Th> */}
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {filterData?.map((data: ChikumaData, index: number) => (
+                  {filterData?.map((data: DaimaruData, index: number) => (
                     <Tr key={index}>
-                      <Td>{data.品番}</Td>
+                      <Td>{data.品番}<Box as="span" ml={2}>{data.商品名}</Box></Td>
                       <Td>{data.サイズ}</Td>
-                      <Td isNumeric>{data.現物在庫}</Td>
-                      <Td isNumeric>{data.入荷検品中}</Td>
-                      <Td>{data.加工品納期１ !== "0" && data.加工品納期１}</Td>
-                      <Td isNumeric>{data.加工品数量１}</Td>
-                      <Td>{data.加工品納期２ !== "0" && data.加工品納期２}</Td>
-                      <Td isNumeric>{data.加工品数量２}</Td>
+                      <Td isNumeric>{data.在庫数}</Td>
+                      <Td isNumeric>{data.徳島在庫}</Td>
+                      <Td isNumeric>{data.外部在庫}</Td>
+                      <Td isNumeric>{data.TOTAL}</Td>
+                      {/* <Td isNumeric>{data.受注残}</Td>
+                      <Td isNumeric>{data.予約}</Td>
+                      <Td isNumeric>{data.仕掛}</Td> */}
                     </Tr>
                   ))}
                 </Tbody>

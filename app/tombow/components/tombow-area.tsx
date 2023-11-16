@@ -1,7 +1,7 @@
 "use client"
 import { useGetTombow } from "@/app/hooks/useGetTombow";
 import Loading from "@/app/loading";
-import { TomboTable } from "@/components/TomboTable";
+import { TomboTable } from "@/app/tombow/components/TomboTable";
 import React from "react";
 
 const TombowArea = () => {

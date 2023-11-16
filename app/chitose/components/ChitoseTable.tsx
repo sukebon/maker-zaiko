@@ -12,7 +12,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
-import { FilterInput } from "./FilterInput";
+import { FilterInput } from "../../../components/FilterInput";
 import { ChitoseData } from "@/types";
 
 type Props = {

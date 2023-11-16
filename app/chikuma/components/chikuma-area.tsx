@@ -1,7 +1,7 @@
 "use client";
 import { useGetChikuma } from "@/app/hooks/useGetChikuma";
 import Loading from "@/app/loading";
-import { ChikumaTable } from "@/components/ChikumaTable";
+import { ChikumaTable } from "@/app/chikuma/components/ChikumaTable";
 import React from "react";
 
 const ChikumaArea = () => {

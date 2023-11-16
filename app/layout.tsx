@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import Loading from "./loading";
 import { Suspense } from "react";
 import SessionProvider from "@/providers/SessionProvider";
+import QueryProvider from "@/providers/queryProvider";
 
 export const metadata = {
   title: "大丸白衣　メーカー在庫",
@@ -24,7 +25,7 @@ export default function RootLayout({
           <Suspense fallback={<Loading />}>
             <div className="flex-1">
               <Header />
-              {children}
+              <QueryProvider>{children}</QueryProvider>
             </div>
           </Suspense>
           <Footer />

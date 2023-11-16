@@ -4,11 +4,13 @@ import { ChikumaTable } from "@/components/ChikumaTable";
 import { ChikumaData } from "@/types";
 import axios from "axios";
 import { parse } from "papaparse";
+import { useGetChikuma } from "../hooks/useGetChikuma";
+import ChikumaArea from "./components/chikuma-area";
 
 const getCsv = async () => {
   const res = await fetch(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv",
-    { cache: 'no-store' }
+    { cache: "no-store" }
   );
   const result = fileParser(await res.text());
   return result;
@@ -32,15 +34,12 @@ const getCatalog = async (id: string) => {
 };
 
 export default async function Chikuma() {
-  const data = await getCsv();
-  const newData = data.map((d) => d.品番);
-  const datalist = Array.from(new Set(newData));
   const catalogSS = await getCatalog("easbbej1r");
   const catalogAW = await getCatalog("8twgzvvvs");
   const catalogFL = await getCatalog("1hfh1ntic");
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
-      <ChikumaTable data={data} datalist={datalist}/>
+      <ChikumaArea />
       <CatalogArea>
         <Catalog catalogData={catalogSS} />
         <Catalog catalogData={catalogAW} />

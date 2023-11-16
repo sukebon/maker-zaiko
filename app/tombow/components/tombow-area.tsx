@@ -1,15 +1,19 @@
-"use client"
-import { useGetTombow } from "@/app/hooks/useGetTombow";
+"use client";
+import { useFetch } from "@/app/hooks/useFetch";
 import Loading from "@/app/loading";
 import { TomboTable } from "@/app/tombow/components/TomboTable";
+import { TombowData } from "@/types";
 import React from "react";
 
 const TombowArea = () => {
-  const { data } = useGetTombow();
-  if(!data) return <Loading/>
+  const { data }: { data: TombowData[] | undefined } = useFetch({
+    url: "/api/tombow",
+    queryKey: "tombow",
+  });
+  if (!data) return <Loading />;
   const newData = data.map((d) => d.品番);
   const datalist = Array.from(new Set(newData));
-  
+
   return <TomboTable data={data} datalist={datalist} />;
 };
 

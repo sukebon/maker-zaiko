@@ -16,31 +16,24 @@ import {
 import { Providers } from "@/app/providers";
 import { HeaderList } from "./HeaderList";
 import Link from "next/link";
+import { IoMenu } from "react-icons/io5";
 
 export const HeaderDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const list = [
-    { title: "大丸白衣", link: "/" , blank: false},
-    { title: "ALPHA PIER　FELLOWS", link: "/chikuma" , blank: false},
-    { title: "KIRAKU", link: "/tombow" , blank: false},
-    { title: "UNITE/Arbe", link: "/chitose" , blank: false},
+    { title: "大丸白衣", link: "/", blank: false },
+    { title: "ALPHA PIER　FELLOWS", link: "/chikuma", blank: false },
+    { title: "KIRAKU", link: "/tombow", blank: false },
+    { title: "UNITE/Arbe", link: "/chitose", blank: false },
     { title: "Printstar", link: "/toms", blank: true },
   ];
 
   return (
     <>
       <Providers>
-        <Flex w="full" justify="flex-end">
-          <Button
-            display={{ base: "block", lg: "none" }}
-            variant="solid"
-            size="sm"
-            colorScheme="blue"
-            onClick={onOpen}
-          >
-            menu
-          </Button>
+        <Flex w="100%" justify="flex-end" display={{ base: "flex", lg: "none" }}>
+          <IoMenu onClick={onOpen} color="white" size="24px" cursor="pointer" />
         </Flex>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />

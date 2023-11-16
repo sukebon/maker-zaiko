@@ -1,8 +1,9 @@
 "use client";
-import { DaimaruData,ChikumaData, TombowData,ChitoseData } from "@/types";
+import { DaimaruData, ChikumaData, TombowData, ChitoseData } from "@/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
   Flex,
   Input,
   InputGroup,
@@ -98,15 +99,15 @@ export const FilterInput: FC<Props> = ({
               <option key={data}>{data}</option>
             ))}
           </datalist>
-          <Flex gap={3} w={{base:"full",md:"auto"}}>
+          <Flex gap={3} w={{ base: "full", md: "auto" }}>
             <input
               type="submit"
               value="検索"
-              className="w-24 text-sm bg-blue-800 text-white rounded cursor-pointer w-full md:w-24"
+              className="w-24 p-2 text-sm bg-blue-800 text-white rounded cursor-pointer w-full md:w-24"
             />
             <button
               value="検索"
-              className="w-24 bg-gray-500 text-sm text-white rounded cursor-pointer w-full md:w-24"
+              className="w-24 p-2 bg-gray-500 text-sm text-white rounded cursor-pointer w-full md:w-24"
               onClick={onReset}
             >
               リセット

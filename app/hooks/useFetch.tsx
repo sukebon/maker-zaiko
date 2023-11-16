@@ -14,11 +14,9 @@ const fetcher = async (params: Params) => {
 };
 
 export const useFetch = (params: Params) => {
-  const QUERY_KEY = params.queryKey;
-  return useQuery(
-    {
-      queryKey: [QUERY_KEY],
-      queryFn: () => fetcher(params),
-    }
-  );
+  return useQuery({
+    queryKey: [params.queryKey],
+    queryFn: () => fetcher(params),
+    staleTime: Infinity
+  });
 };

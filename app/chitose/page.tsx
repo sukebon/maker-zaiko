@@ -61,7 +61,7 @@ const getCatalog = async (id: string) => {
     `https://daimaru-hakui.microcms.io/api/v1/catalog/${id}`,
     {
       headers: {
-        "X-MICROCMS-API-KEY": "3c62454d-9a98-4e3d-aee1-d337c3bbdf7e",
+        "X-MICROCMS-API-KEY": process.env.X_MICROCMS_API_KEY
       },
     }
   );

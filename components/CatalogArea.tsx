@@ -9,8 +9,14 @@ type Props = {
 export const CatalogArea: FC<Props> = ({ children }) => {
   return (
     <>
-      <Box className="static lg:fixed" left={10} bottom={20} mt={12}>
-        <Flex gap={12} direction="column" py={12} align="center">
+      <Box mt={22}>
+        <Flex
+          className="flex-col lg:flex-row"
+          gap={12}
+          py={12}
+          align="center"
+          justify="flex-end"
+        >
           {children}
         </Flex>
       </Box>

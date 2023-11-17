@@ -1,7 +1,7 @@
 "use client";
 import { useFetch } from "@/app/hooks/useFetch";
 import Loading from "@/app/loading";
-import { TomboTable } from "@/app/tombow/components/TomboTable";
+import { TomboTable } from "@/app/tombow/components/tombo-table";
 import { TombowData } from "@/types";
 import React from "react";
 

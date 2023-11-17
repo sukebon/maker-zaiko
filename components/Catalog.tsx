@@ -9,14 +9,13 @@ type Props = {
 
 export const Catalog: FC<Props> = ({ catalogData }) => {
   return (
-    <div className="w-11/12 lg:w-32">
+    <div className="w-11/12 lg:w-[calc(80px)]"> 
       <Link href={catalogData?.link} target="_blank" rel="noopener noreferrer">
         <img
           src={catalogData?.image?.url}
-          width={300}
-          height={300}
+          max-width="80px"
+          max-height={200}
           alt={catalogData?.maker}
-          
         />
       </Link>
     </div>

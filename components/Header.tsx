@@ -3,7 +3,8 @@ import React, { FC } from "react";
 import { HeaderList } from "./HeaderList";
 import { HeaderDrawer } from "./HeaderDrawer";
 import { signOut, useSession } from "next-auth/react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import Link from "next/link";
 
 export const Header: FC = () => {
   const session = useSession();
@@ -17,17 +18,29 @@ export const Header: FC = () => {
         <div className="flex gap-3 items-center">
           <HeaderList />
         </div>
-        {session.data?.user.uid && (
-          <div
-            className="flex items-center text-white text-sm cursor-pointer"
-            onClick={signOutHandler}
-          >
-            ログアウト
+        <Flex align="center" gap={26}>
+          <div>
+            <Link
+              className="text-white text-sm cursor-pointer"
+              href="https://myuni.vercel.app/catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              マイユニポータル
+            </Link>
           </div>
-        )}
+          {session.data?.user.uid && (
+            <div
+              className="flex items-center text-white text-sm cursor-pointer"
+              onClick={signOutHandler}
+            >
+              ログアウト
+            </div>
+          )}
+        </Flex>
       </div>
-     
-        <HeaderDrawer />
+
+      <HeaderDrawer />
     </div>
   );
 };

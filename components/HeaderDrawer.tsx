@@ -14,25 +14,26 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { Providers } from "@/app/providers";
-import { HeaderList } from "./HeaderList";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
+import { links } from "@/utils/links";
+import { signOut, useSession } from "next-auth/react";
 
 export const HeaderDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const list = [
-    { title: "大丸白衣", link: "/", blank: false },
-    { title: "ALPHA PIER　FELLOWS", link: "/chikuma", blank: false },
-    { title: "KIRAKU", link: "/tombow", blank: false },
-    { title: "UNITE/Arbe", link: "/chitose", blank: false },
-    { title: "Printstar", link: "/toms", blank: true },
-  ];
+  const session = useSession();
+  const signOutHandler = () => {
+    signOut();
+  };
 
   return (
     <>
       <Providers>
-        <Flex w="100%" justify="flex-end" display={{ base: "flex", lg: "none" }}>
+        <Flex
+          w="100%"
+          justify="flex-end"
+          display={{ base: "flex", lg: "none" }}
+        >
           <IoMenu onClick={onOpen} color="white" size="24px" cursor="pointer" />
         </Flex>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
@@ -42,7 +43,7 @@ export const HeaderDrawer = () => {
             <DrawerHeader>Menu</DrawerHeader>
 
             <DrawerBody>
-              {list.map(({ title, link, blank }) => (
+              {links.map(({ title, link, blank }) => (
                 <Link
                   key={title}
                   href={link}
@@ -55,11 +56,33 @@ export const HeaderDrawer = () => {
                   </Box>
                 </Link>
               ))}
+
+              <Link
+                className="text-sm cursor-pointer"
+                href="https://myuni.vercel.app/catalog"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Box my={2} _hover={{ textColor: "blue" }}>
+                  マイユニポータル
+                </Box>
+              </Link>
+
+              {session.data?.user.uid && (
+                <div
+                  className="flex items-centertext-sm cursor-pointer"
+                  onClick={signOutHandler}
+                >
+                  <Box my={2} _hover={{ textColor: "blue" }}>
+                    ログアウト
+                  </Box>
+                </div>
+              )}
             </DrawerBody>
 
             <DrawerFooter>
               <Button variant="outline" mr={3} onClick={onClose}>
-                close
+                閉じる
               </Button>
             </DrawerFooter>
           </DrawerContent>

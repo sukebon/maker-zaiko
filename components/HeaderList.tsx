@@ -1,4 +1,5 @@
 "use client";
+import { links } from "@/utils/links";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FC } from "react";
@@ -12,19 +13,10 @@ export const HeaderList: FC = () => {
       {title}
     </button>
   );
-  const list = [
-    { title: "大丸白衣", link: "/daimaru", blank: false },
-    { title: "ALPHA PIER　FELLOWS", link: "/chikuma", blank: false },
-    { title: "KIRAKU", link: "/tombow", blank: false },
-    { title: "UNITE/Arbe", link: "/chitose", blank: false },
-    { title: "Bonmax", link: "/bonmax", blank: false },
-    { title: "Printstar", link: "/toms", blank: false },
-    // { title: "Printstar", link: "https://tomsj.com/brand/stock/", blank: true },
-  ];
 
   return (
     <>
-      {list.map(({ title, link, blank }, index) => (
+      {links.map(({ title, link, blank }, index) => (
         <Link
           key={index}
           href={link}

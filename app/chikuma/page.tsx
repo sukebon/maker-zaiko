@@ -1,10 +1,8 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { ChikumaTable } from "@/app/chikuma/components/ChikumaTable";
 import { ChikumaData } from "@/types";
 import axios from "axios";
 import { parse } from "papaparse";
-import { useGetChikuma } from "../hooks/useGetChikuma";
 import ChikumaArea from "./components/chikuma-area";
 
 const getCsv = async () => {

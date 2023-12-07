@@ -12,7 +12,17 @@ const SideBar = () => {
       style={{ minHeight: "calc(100vh)", top: 0 }}
     >
       <div className="p-3 text-lg text-white">大丸白衣 WEB在庫</div>
-      <div className="flex flex-col gap-2 px-3 mt-6">
+      <div className="flex flex-col gap-2 px-3 mt-3">
+        <Link
+          className="text-white text-sm cursor-pointer"
+          href="https://myuni.vercel.app/catalog"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="w-full bg-transparent hover:bg-blue-700 text-sm text-white font-semibold hover:text-white py-1 px-4 border border-white-500 rounded">
+            マイユニポータル
+          </button>
+        </Link>
         {links.map(({ title, link }) => (
           <Link key={title} href={link}>
             <div

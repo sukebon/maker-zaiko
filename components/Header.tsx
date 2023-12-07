@@ -17,16 +17,6 @@ export const Header: FC = () => {
       <div className="w-full hidden lg:flex gap-3 justify-between mx-3">
         <div className="flex gap-3 items-center">{/* <HeaderList /> */}</div>
         <Flex align="center" gap={26}>
-          <div>
-            <Link
-              className="text-white text-sm cursor-pointer"
-              href="https://myuni.vercel.app/catalog"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              マイユニポータル
-            </Link>
-          </div>
           {session.data?.user.uid && (
             <div
               className="flex items-center text-white text-sm cursor-pointer"

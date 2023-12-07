@@ -13,7 +13,7 @@ export const Catalog: FC<Props> = ({ catalogData }) => {
       <Link href={catalogData?.link} target="_blank" rel="noopener noreferrer">
         <img
           src={catalogData?.image?.url}
-          max-width="80px"
+          className="w-full lg:max-w-[calc(80px)]"
           max-height={200}
           alt={catalogData?.maker}
         />

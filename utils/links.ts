@@ -5,5 +5,6 @@ export const links = [
     { title: "KIRAKU", link: "/tombow", blank: false },
     { title: "UNITE/Arbe", link: "/chitose", blank: false },
     { title: "Bonmax", link: "/bonmax", blank: false },
+    { title: "Karsee", link: "/karsee", blank: false },
     { title: "Printstar", link: "/toms", blank: false },
   ];

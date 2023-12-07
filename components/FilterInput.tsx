@@ -6,6 +6,7 @@ import {
   ChitoseData,
   BonmaxData,
   SeleryData,
+  KarseeData,
 } from "@/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
@@ -30,7 +31,8 @@ type Props = {
     | React.Dispatch<React.SetStateAction<ChitoseData[]>>
     | React.Dispatch<React.SetStateAction<DaimaruData[]>>
     | React.Dispatch<React.SetStateAction<BonmaxData[]>>
-    | React.Dispatch<React.SetStateAction<SeleryData[]>>;
+    | React.Dispatch<React.SetStateAction<SeleryData[]>>
+    | React.Dispatch<React.SetStateAction<KarseeData[]>>;
 
   datalist: string[];
   addArray: Function;
@@ -40,7 +42,8 @@ type Props = {
     | ChitoseData[]
     | DaimaruData[]
     | BonmaxData[]
-    | SeleryData[];
+    | SeleryData[]
+    | KarseeData[];
 };
 
 export const FilterInput: FC<Props> = ({

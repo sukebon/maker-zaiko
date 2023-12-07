@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Loading from "../loading";
 import { useFetch } from "../hooks/useFetch";
 import { ServoData } from "@/types";
 import { FilterInput } from "@/components/FilterInput";
@@ -8,6 +7,7 @@ import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import { useAddArray } from "../hooks/useAddArray";
 import { ServoTable } from "./Servo-table";
+import LoadingSpinner from "../../components/spinner";
 
 const ServoArea = () => {
   const {addArray,filterData,setFilterData} = useAddArray<ServoData>()
@@ -17,7 +17,7 @@ const ServoArea = () => {
     queryKey: "servo",
   });
 
-  if (!data) return <Loading />;
+  if (!data) return <LoadingSpinner />;
   
   const newData = data.map((d) => d.品番);
   const datalist = Array.from(new Set(newData));
@@ -26,7 +26,7 @@ const ServoArea = () => {
     <Providers>
       <Flex direction="column" alignItems="center" w="full">
         <FilterInput
-          title="Servo"
+          title="SERVO / GROW / LAND"
           setFilterData={setFilterData}
           datalist={datalist}
           addArray={addArray}

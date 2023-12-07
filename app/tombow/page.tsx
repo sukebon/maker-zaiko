@@ -19,7 +19,7 @@ export default async function Tombow() {
   const catalog = await getCatalog("pecptt28f");
 
   return (
-    <main className="flex flex-col items-center justify-between overflow-hidden">
+    <main className="w-full flex flex-col items-center justify-between overflow-hidden">
       <TombowArea/>
       <CatalogArea>
         <Catalog catalogData={catalog} />

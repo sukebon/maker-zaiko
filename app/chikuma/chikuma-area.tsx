@@ -1,5 +1,4 @@
 "use client";
-import Loading from "@/app/loading";
 import React from "react";
 import { useFetch } from "@/app/hooks/useFetch";
 import { ChikumaData } from "@/types";
@@ -8,6 +7,7 @@ import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { useAddArray } from "../hooks/useAddArray";
+import LoadingSpinner from "@/components/spinner";
 
 const ChikumaArea = () => {
   const {addArray,filterData,setFilterData} = useAddArray<ChikumaData>()
@@ -17,7 +17,7 @@ const ChikumaArea = () => {
     queryKey: "chkuma",
   });
 
-  if (!data) return <Loading />;
+  if (!data) return <LoadingSpinner />;
   const newData = data.map((d) => d.品番);
   const datalist = Array.from(new Set(newData));
 

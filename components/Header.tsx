@@ -13,11 +13,9 @@ export const Header: FC = () => {
   };
   return (
     <div className="px-3 flex sticky top-0 bg-blue-900 h-12 z-10 flex items-center">
-      {/* <div className='ml-3 text-white'>大丸白衣</div> */}
+      <div className="w-full text-white lg:hidden">大丸白衣 WEB在庫</div>
       <div className="w-full hidden lg:flex gap-3 justify-between mx-3">
-        <div className="flex gap-3 items-center">
-          <HeaderList />
-        </div>
+        <div className="flex gap-3 items-center">{/* <HeaderList /> */}</div>
         <Flex align="center" gap={26}>
           <div>
             <Link

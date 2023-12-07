@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from "react";
-import Loading from "../loading";
+import React from "react";
 import { SeleryTable } from "./selery-table";
 import { useFetch } from "../hooks/useFetch";
 import { SeleryData } from "@/types";
@@ -8,6 +7,7 @@ import { FilterInput } from "@/components/FilterInput";
 import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import { useAddArray } from "../hooks/useAddArray";
+import LoadingSpinner from "../../components/spinner";
 
 const SeleryArea = () => {
   const {addArray,filterData,setFilterData} = useAddArray<SeleryData>()
@@ -17,7 +17,7 @@ const SeleryArea = () => {
     queryKey: "selery",
   });
 
-  if (!data) return <Loading />;
+  if (!data) return <LoadingSpinner />;
   
   const newData = data.map((d) => d.品番);
   const datalist = Array.from(new Set(newData));

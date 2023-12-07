@@ -71,16 +71,31 @@ export type SeleryData = {
 };
 
 export type KarseeData = {
-  ブランド:string
-  品番:string
-  カラー:string
-  サイズ:string
-  JANコード:string
-  次回上がり予定日:string
-  在庫数:string
-  作成日付:string
-  作成日付時刻:string
-  アイテム名称:string
-  品名:string
-  カラー名称:string
-}
+  ブランド: string;
+  品番: string;
+  カラー: string;
+  サイズ: string;
+  JANコード: string;
+  次回上がり予定日: string;
+  在庫数: string;
+  作成日付: string;
+  作成日付時刻: string;
+  アイテム名称: string;
+  品名: string;
+  カラー名称: string;
+};
+
+export type ServoData = {
+  品番: string;
+  商品コード: string;
+  商品名: string;
+  カラー: string;
+  サイズ: string;
+  在庫数: number;
+  "入荷予定①日付": string;
+  "入荷予定①予定数": string;
+  "入荷予定②日付": string;
+  "入荷予定②予定数": string;
+  以降予定数: string;
+  JANコード: string;
+};

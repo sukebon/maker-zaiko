@@ -7,6 +7,7 @@ import {
   BonmaxData,
   SeleryData,
   KarseeData,
+  ServoData,
 } from "@/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
@@ -32,7 +33,8 @@ type Props = {
     | React.Dispatch<React.SetStateAction<DaimaruData[]>>
     | React.Dispatch<React.SetStateAction<BonmaxData[]>>
     | React.Dispatch<React.SetStateAction<SeleryData[]>>
-    | React.Dispatch<React.SetStateAction<KarseeData[]>>;
+    | React.Dispatch<React.SetStateAction<KarseeData[]>>
+    | React.Dispatch<React.SetStateAction<ServoData[]>>;
 
   datalist: string[];
   addArray: Function;
@@ -43,7 +45,8 @@ type Props = {
     | DaimaruData[]
     | BonmaxData[]
     | SeleryData[]
-    | KarseeData[];
+    | KarseeData[]
+    | ServoData[];
 };
 
 export const FilterInput: FC<Props> = ({
@@ -51,7 +54,7 @@ export const FilterInput: FC<Props> = ({
   setFilterData,
   datalist,
   addArray,
-  allData
+  allData,
 }) => {
   const [placeholderArray, setPlaceholderArray] = useState<string[]>([]);
   const addPlaceholder = (productNumber: string) => {
@@ -72,7 +75,7 @@ export const FilterInput: FC<Props> = ({
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     addPlaceholder(data.text);
-    addArray(data.text,allData);
+    addArray(data.text, allData);
     reset();
   };
 

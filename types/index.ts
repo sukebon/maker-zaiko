@@ -57,3 +57,15 @@ export type BonmaxData = {
   入荷日: string;
   調達日: string;
 };
+
+export type SeleryData = {
+  // JANコード: number;
+  在庫数: string;
+  次回入荷日: string;
+  次回入荷数: string;
+  商品コード: string;
+  品番: string;
+  アイテム: string;
+  色: string;
+  サイズ: string;
+};

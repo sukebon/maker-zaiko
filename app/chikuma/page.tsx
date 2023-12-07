@@ -3,7 +3,7 @@ import { CatalogArea } from "@/components/CatalogArea";
 import { ChikumaData } from "@/types";
 import axios from "axios";
 import { parse } from "papaparse";
-import ChikumaArea from "./components/chikuma-area";
+import ChikumaArea from "./chikuma-area";
 
 const getCsv = async () => {
   const res = await fetch(

@@ -1,7 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import axios from "axios";
-import TombowArea from "./components/tombow-area";
+import TombowArea from "./tombow-area";
 
 const getCatalog = async (id: string) => {
   const res = await axios.get(

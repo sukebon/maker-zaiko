@@ -1,9 +1,15 @@
 "use client";
-import { DaimaruData, ChikumaData, TombowData, ChitoseData, BonmaxData } from "@/types";
+import {
+  DaimaruData,
+  ChikumaData,
+  TombowData,
+  ChitoseData,
+  BonmaxData,
+  SeleryData,
+} from "@/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Flex,
   Input,
   InputGroup,
@@ -23,9 +29,18 @@ type Props = {
     | React.Dispatch<React.SetStateAction<TombowData[]>>
     | React.Dispatch<React.SetStateAction<ChitoseData[]>>
     | React.Dispatch<React.SetStateAction<DaimaruData[]>>
-    | React.Dispatch<React.SetStateAction<BonmaxData[]>>;
+    | React.Dispatch<React.SetStateAction<BonmaxData[]>>
+    | React.Dispatch<React.SetStateAction<SeleryData[]>>;
+
   datalist: string[];
   addArray: Function;
+  allData:
+    | ChikumaData[]
+    | TombowData[]
+    | ChitoseData[]
+    | DaimaruData[]
+    | BonmaxData[]
+    | SeleryData[];
 };
 
 export const FilterInput: FC<Props> = ({
@@ -33,6 +48,7 @@ export const FilterInput: FC<Props> = ({
   setFilterData,
   datalist,
   addArray,
+  allData
 }) => {
   const [placeholderArray, setPlaceholderArray] = useState<string[]>([]);
   const addPlaceholder = (productNumber: string) => {
@@ -53,7 +69,7 @@ export const FilterInput: FC<Props> = ({
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     addPlaceholder(data.text);
-    addArray(data.text);
+    addArray(data.text,allData);
     reset();
   };
 

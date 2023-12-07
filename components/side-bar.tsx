@@ -11,7 +11,7 @@ const SideBar = () => {
       className="sticky w-[calc(300px)] bg-blue-900 hidden lg:block"
       style={{ minHeight: "calc(100vh)", top: 0 }}
     >
-      <div className="p-3 text-lg text-white">大丸白衣 WEB在庫</div>
+      <div className="px-5 py-3 text-lg text-white">大丸白衣 WEB在庫</div>
       <div className="flex flex-col gap-2 px-3 mt-3">
         <Link
           className="text-white text-sm cursor-pointer"

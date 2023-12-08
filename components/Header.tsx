@@ -12,7 +12,7 @@ export const Header: FC = () => {
 
   return (
     <div
-      className="px-3 flex sticky top-0 bg-blue-900 h-12 z-10 flex items-center z-10"
+      className="px-3 flex sticky top-0 bg-blue-900 h-12 z-10 flex items-center z-100"
       style={{ boxShadow: "0px 1px 5px 2px rgba(0,0,0,0.2)" }}
     >
       <div className="w-full text-white lg:hidden">大丸白衣 WEB在庫</div>

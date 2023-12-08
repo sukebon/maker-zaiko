@@ -26,7 +26,6 @@ const LoginForm: FC = () => {
       const userCredential =
         await signInWithEmailAndPassword(auth, email, password);
       const idToken = await userCredential.user.getIdToken();
-      console.log(idToken);
       await signIn('credentials', {
         idToken,
         callbackUrl: '/daimaru'
@@ -46,6 +45,7 @@ const LoginForm: FC = () => {
         <div className="mt-6 w-full">
           <input
             type="text"
+            autoComplete='off'
             className="min-w-0 w-full p-2 border"
             {...register("email", { required: true })}
           />

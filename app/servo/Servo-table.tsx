@@ -30,15 +30,15 @@ export const ServoTable: FC<Props> = ({ filterData }) => {
             <Tbody>
               {filterData?.map((data: ServoData, index: number) => (
                 <Tr key={index}>
-                  <Td>{data.品番}</Td>
-                  <Td>{data.商品名}</Td>
-                  <Td>{data.カラー}</Td>
-                  <Td textAlign="center">{data.サイズ}</Td>
-                  <Td isNumeric>{data.在庫数}</Td>
-                  <Td textAlign="center">{data["入荷予定①日付"]}</Td>
-                  <Td isNumeric>{data["入荷予定①予定数"]}</Td>
-                  <Td textAlign="center">{data["入荷予定②日付"]}</Td>
-                  <Td isNumeric>{data["入荷予定②予定数"]}</Td>
+                  <Td>{data.productNumber}</Td>
+                  <Td>{data.productName}</Td>
+                  <Td>{data.color}</Td>
+                  <Td textAlign="center">{data.size}</Td>
+                  <Td isNumeric>{data.stock}</Td>
+                  <Td textAlign="center">{data.nextTimeDate}</Td>
+                  <Td isNumeric>{data.nextTimeStock}</Td>
+                  <Td textAlign="center">{data.nextTimeDate2}</Td>
+                  <Td isNumeric>{data.nextTimeStock2}</Td>
                   {/* <Td>{data.JANコード}</Td> */}
                 </Tr>
               ))}

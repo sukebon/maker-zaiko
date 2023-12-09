@@ -10,16 +10,16 @@ import { ServoTable } from "./Servo-table";
 import LoadingSpinner from "../../components/spinner";
 
 const ServoArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<ServoData>()
-  
-  const { data }: { data: ServoData[] | undefined } = useFetch({
+  const { addArray, filterData, setFilterData } = useAddArray<ServoData>();
+
+  const { data }: { data: ServoData[] | undefined; } = useFetch({
     url: "/api/servo",
     queryKey: "servo",
   });
 
   if (!data) return <LoadingSpinner />;
-  
-  const newData = data.map((d) => d.品番);
+
+  const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 
   return (

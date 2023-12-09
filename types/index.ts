@@ -87,7 +87,7 @@ export type KarseeData = {
 export type ServoData = {
   jan: string;
   row: number;
-  productNumber: number;
+  productNumber: string;
   productName: string;
   color: string;
   size: string;

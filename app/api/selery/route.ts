@@ -33,6 +33,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
+  console.log(body)
 
   const prisma = new PrismaClient();
   const newBody = body.map((value: any, idx: number) => ({

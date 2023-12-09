@@ -4,7 +4,8 @@ import CsvRegisterInput from "./csv-register-input";
 import { useMutationSqlite } from "../hooks/useMutationSqlite";
 
 const CsvRegisterForm = () => {
-  const { useMutationSelery, useMutationBonmax,useMutationServo } = useMutationSqlite();
+  const { useMutationSelery, useMutationBonmax, useMutationServo } = useMutationSqlite();
+  // const setIsLoading = useStore((state)=>state.setIsLoading)
 
   const handleClickSelery = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -12,7 +13,7 @@ const CsvRegisterForm = () => {
   ) => {
     e.preventDefault();
     if (!csvFile) return;
-    const csvString = csvFile?.toString().split("\r");
+    const csvString = csvFile?.toString().split(/\r?\n/);
     const csvArray = csvString.map((a) => a.split(","));
     if (!csvArray) return;
     const header = csvArray.shift();
@@ -37,7 +38,7 @@ const CsvRegisterForm = () => {
   ) => {
     e.preventDefault();
     if (!csvFile) return;
-    const csvString = csvFile?.toString().split("\r");
+    const csvString = csvFile?.toString().split(/\r?\n/);
     const csvArray = csvString.map((a) => a.split(","));
     if (!csvArray) return;
 
@@ -63,37 +64,26 @@ const CsvRegisterForm = () => {
   ) => {
     e.preventDefault();
     if (!csvFile) return;
-    console.log(csvFile)
-    let csvString = csvFile?.toString().split("\n");
-    csvString = csvFile?.toString().split("\r");
+    let csvString = csvFile?.toString().split(/\r?\n/);
     let csvArray = csvString.map((a) => a.split(","));
-    const newArray = csvArray.map((csv:any)=>{
-      const pattarn = /("|\n)/g
-      return {
-        ...csv,
-        productNumber:csv.productNumber?.replace(pattarn,"")
-      }
-    })
-    console.log(newArray)
-    // if (!csvArray) return;
-    // const header = csvArray.shift();
-    // if (!header) return;
-
-    // const body = csvArray.map((csv) => ({
-    //   jan: Number(csv[10]),
-    //   productNumber: csv[0] ,
-    //   productName: csv[1],
-    //   color: csv[2],
-    //   size: csv[3],
-    //   stock: Number(csv[4]),
-    //   nextTimeDate: (csv[5]),
-    //   nextTimeStock: Number(csv[6]),
-    //   nextTimeDate2: (csv[7]),
-    //   nextTimeStock2: Number(csv[8]),
-    // }));
-    // // console.log(body)
-    // const { mutate } = useMutationServo;
-    // mutate({ params: body, url: "/api/servo" });
+    if (!csvArray) return;
+    const header = csvArray.shift();
+    if (!header) return;
+    const body = csvArray.map((csv) => ({
+      jan: Number(csv[10].replace(/(\")/g, "")),
+      productNumber: csv[0].replace(/(\")/g, ""),
+      productName: csv[1].replace(/(\")/g, ""),
+      color: csv[2].replace(/(\")/g, ""),
+      size: csv[3].replace(/(\")/g, ""),
+      stock: Number(csv[4].replace(/(\")/g, "")),
+      nextTimeDate: csv[5].replace(/(\")/g, ""),
+      nextTimeStock: Number(csv[6].replace(/(\")/g, "")),
+      nextTimeDate2: (csv[7].replace(/(\")/g, "")),
+      nextTimeStock2: Number(csv[8].replace(/(\")/g, "")),
+    }));
+    console.log(body);
+    const { mutate } = useMutationServo;
+    mutate({ params: body, url: "/api/servo" });
   };
 
   const ThStyle = "text-left px-3 py-2 border border-slate-300";

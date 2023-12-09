@@ -1,7 +1,7 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { SeleryData } from "@/types";
+import {  SeleryData } from "@/types";
 import TableArea from "@/components/table-area";
 
 type Props = {
@@ -23,19 +23,20 @@ export const SeleryTable: FC<Props> = ({ filterData }) => {
                 <Th>在庫数</Th>
                 <Th>次回入荷日</Th>
                 <Th>次回入荷数</Th>
+                <Th>JANコード</Th>
               </Tr>
             </Thead>
             <Tbody>
               {filterData?.map((data: SeleryData, index: number) => (
                 <Tr key={index}>
-                  <Td>{data.品番}</Td>
-                  <Td>{data.アイテム}</Td>
-                  <Td>{data.色}</Td>
-                  <Td textAlign="center">{data.サイズ}</Td>
-                  <Td isNumeric>{data.在庫数}</Td>
-                  <Td>{data.次回入荷日}</Td>
-                  <Td isNumeric>{data.次回入荷数}</Td>
-                  {/* <Td>{data.JANコード}</Td> */}
+                  <Td>{data.productNumber}</Td>
+                  <Td>{data.productName}</Td>
+                  <Td>{data.color}</Td>
+                  <Td textAlign="center">{data.size}</Td>
+                  <Td isNumeric>{data.stock}</Td>
+                  <Td>{data.nextTimeDate}</Td>
+                  <Td isNumeric>{data.nextTimeStock}</Td>
+                  <Td>{data.jan}</Td>
                 </Tr>
               ))}
             </Tbody>

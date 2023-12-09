@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Selery {
+  id            String  @id @default(uuid())
+  row           Int?
+  jan           String?
+  stock         Int?
+  productNumber String?
+  productName   String?
+  color         String?
+  size          String?
+  nextTimeStock Int?
+  nextTimeDate  String?
+}
+
+model Bonmax {
+  id            String  @id @default(uuid())
+  row           Int?
+  jan           String?
+  productNumber String?
+  productName   String?
+  color         String?
+  size          String?
+  stock         Int?
+  externalStock Int?
+  nextTimeStock Int?
+  nextTimeDate  String?
+  leadTime      String?
+}
+
+model Servo {
+  id             String  @id @default(uuid())
+  row            Int?
+  jan            String?
+  productNumber  String?
+  productName    String?
+  color          String?
+  size           String?
+  stock          Int?
+  nextTimeDate   String?
+  nextTimeStock  Int?
+  nextTimeDate2  String?
+  nextTimeStock2 Int?
+}
+
+model Karsee {
+  id            String  @id @default(uuid())
+  row           Int?
+  jan           String?
+  productNumber String?
+  productName   String?
+  color         String?
+  colorName     String?
+  size          String?
+  stock         Int?
+  nextTimeDate  String?
+  brand         String?
+}

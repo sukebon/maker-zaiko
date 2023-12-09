@@ -6,11 +6,11 @@ import { BonmaxTable } from "./bonmax-table";
 import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddArray } from "../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
+import { useAddToArray } from "../hooks/useAddToArray";
 
 const BonmaxArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<BonmaxData>()
+  const {addArray,filterData,setFilterData} = useAddToArray<BonmaxData>()
 
   const { data }: { data: BonmaxData[] | undefined } = useFetch({
     url: "/api/bonmax",
@@ -19,7 +19,7 @@ const BonmaxArea = () => {
 
   if (!data) return <LoadingSpinner />;
 
-  const newData = data.map((d) => d.品番);
+  const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 
   return (

@@ -1,3 +1,41 @@
+// import { NextRequest, NextResponse } from "next/server";
+// import { PrismaClient } from "@prisma/client";
+
+// export async function GET(req: NextRequest) {
+//   const prisma = new PrismaClient();
+
+//   const data = await prisma.servo.findMany({
+//     orderBy: {
+//       row: "asc",
+//     },
+//   });
+
+//   return NextResponse.json(data, { status: 200 });
+// }
+
+// export async function POST(req: NextRequest) {
+//   const { body } = await req.json();
+
+//   const prisma = new PrismaClient();
+//   const newBody = body.map((value: any, idx: number) => ({
+//     ...value,
+//     jan: String(value.jan),
+//     row: idx,
+//   }));
+
+//   await prisma.servo.deleteMany();
+//   await Promise.all(
+//     newBody.map(async (data: any) => {
+//       await prisma.servo.create({
+//         data: { ...data },
+//       });
+//     })
+//   );
+//   return NextResponse.json("result", { status: 201 });
+// }
+
+
+
 import { ServoData } from "@/types";
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
@@ -5,7 +43,7 @@ import { parse } from "papaparse";
 
 const fileParser = (csvData: string) => {
   const result = parse(csvData, { header: true });
-  return result.data as ServoData[];
+  return result.data as any[];
 };
 
 export async function GET(req: NextRequest) {

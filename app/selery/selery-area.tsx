@@ -6,11 +6,11 @@ import { SeleryData } from "@/types";
 import { FilterInput } from "@/components/FilterInput";
 import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
-import { useAddArray } from "../hooks/useAddArray";
 import LoadingSpinner from "../../components/spinner";
+import { useAddToArray } from "../hooks/useAddToArray";
 
 const SeleryArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<SeleryData>()
+  const {addArray,filterData,setFilterData} = useAddToArray<SeleryData>()
   
   const { data }: { data: SeleryData[] | undefined } = useFetch({
     url: "/api/selery",
@@ -19,7 +19,7 @@ const SeleryArea = () => {
 
   if (!data) return <LoadingSpinner />;
   
-  const newData = data.map((d) => d.品番);
+  const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 
   return (

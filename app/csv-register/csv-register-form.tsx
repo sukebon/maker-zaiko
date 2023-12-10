@@ -5,7 +5,6 @@ import { useMutationSqlite } from "../hooks/useMutationSqlite";
 
 const CsvRegisterForm = () => {
   const { useMutationSelery, useMutationBonmax, useMutationServo } = useMutationSqlite();
-  // const setIsLoading = useStore((state)=>state.setIsLoading)
 
   const handleClickSelery = (
     e: React.MouseEvent<HTMLButtonElement>,

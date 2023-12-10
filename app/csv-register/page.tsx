@@ -6,11 +6,11 @@ const CsvRegisterPage = async () => {
 
   const prisma = new PrismaClient();
 
-  const getPost = async () => {
+  const getData = async () => {
     const data = await prisma.selery.findMany();
     return data;
   };
-  const data = await getPost();
+  const data = await getData();
 
   if (!data) return;
 

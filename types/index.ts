@@ -45,28 +45,31 @@ export type DaimaruData = {
 };
 
 export type BonmaxData = {
-  jan: number;
-  productNumber: string;
-  productName: string;
-  color: string;
-  size: string;
-  stock: number;
-  nextTimeDate: string;
-  nextTimeStock: number;
-  externalStock: number;
-  leadTime: string;
+  id: string;
+  row: number | null;
+  jan: string | null;
+  productNumber: string | null;
+  productName: string | null;
+  color: string | null;
+  size: string | null;
+  stock: number | null;
+  externalStock: number | null;
+  nextTimeStock: number | null;
+  nextTimeDate: string | null;
+  leadTime: string | null;
 };
 
 export type SeleryData = {
-  jan: string;
-  row: number;
-  stock: number;
-  nextTimeDate: string;
-  nextTimeStock: number;
-  productNumber: string;
-  productName: string;
-  color: string;
-  size: string;
+  id: string;
+  row: number | null;
+  jan: string | null;
+  stock: number | null;
+  productNumber: string | null;
+  productName: string | null;
+  color: string | null;
+  size: string | null;
+  nextTimeStock: number | null;
+  nextTimeDate: string | null;
 };
 
 export type KarseeData = {
@@ -85,15 +88,16 @@ export type KarseeData = {
 };
 
 export type ServoData = {
-  jan: string;
-  row: number;
-  productNumber: string;
-  productName: string;
-  color: string;
-  size: string;
-  stock: number;
-  nextTimeDate: string;
-  nextTimeStock: number;
-  nextTimeDate2: string;
-  nextTimeStock2: number;
+  id: string;
+  row: number | null;
+  jan: string | null;
+  productNumber: string | null;
+  productName: string | null;
+  color: string | null;
+  size: string | null;
+  stock: number | null;
+  nextTimeDate: string | null;
+  nextTimeStock: number | null;
+  nextTimeDate2: string | null;
+  nextTimeStock2: number | null;
 };

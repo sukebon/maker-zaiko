@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { FC, useEffect } from "react";
 import { SeleryTable } from "./selery-table";
 import { useFetch } from "../hooks/useFetch";
 import { SeleryData } from "@/types";
@@ -8,17 +8,22 @@ import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import LoadingSpinner from "../../components/spinner";
 import { useAddToArray } from "../hooks/useAddToArray";
+import axios from "axios";
 
-const SeleryArea = () => {
-  const {addArray,filterData,setFilterData} = useAddToArray<SeleryData>()
-  
-  const { data }: { data: SeleryData[] | undefined } = useFetch({
-    url: "/api/selery",
-    queryKey: "selery",
-  });
+type Props = {
+  data: SeleryData[];
+};
+
+const SeleryArea: FC<Props> = ({ data }) => {
+  const { addArray, filterData, setFilterData } = useAddToArray<SeleryData>();
+
+  // const { data }: { data: SeleryData[] | undefined; } = useFetch({
+  //   url: "/api/selery",
+  //   queryKey: "selery",
+  // });
 
   if (!data) return <LoadingSpinner />;
-  
+
   const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 

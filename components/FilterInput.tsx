@@ -27,26 +27,26 @@ type Inputs = {
 type Props = {
   title: string;
   setFilterData:
-    | React.Dispatch<React.SetStateAction<ChikumaData[]>>
-    | React.Dispatch<React.SetStateAction<TombowData[]>>
-    | React.Dispatch<React.SetStateAction<ChitoseData[]>>
-    | React.Dispatch<React.SetStateAction<DaimaruData[]>>
-    | React.Dispatch<React.SetStateAction<BonmaxData[]>>
-    | React.Dispatch<React.SetStateAction<SeleryData[]>>
-    | React.Dispatch<React.SetStateAction<KarseeData[]>>
-    | React.Dispatch<React.SetStateAction<ServoData[]>>;
+  | React.Dispatch<React.SetStateAction<ChikumaData[]>>
+  | React.Dispatch<React.SetStateAction<TombowData[]>>
+  | React.Dispatch<React.SetStateAction<ChitoseData[]>>
+  | React.Dispatch<React.SetStateAction<DaimaruData[]>>
+  | React.Dispatch<React.SetStateAction<BonmaxData[]>>
+  | React.Dispatch<React.SetStateAction<SeleryData[]>>
+  | React.Dispatch<React.SetStateAction<KarseeData[]>>
+  | React.Dispatch<React.SetStateAction<ServoData[]>>;
 
-  datalist: string[];
+  datalist: (string | null)[];
   addArray: Function;
   allData:
-    | ChikumaData[]
-    | TombowData[]
-    | ChitoseData[]
-    | DaimaruData[]
-    | BonmaxData[]
-    | SeleryData[]
-    | KarseeData[]
-    | ServoData[];
+  | ChikumaData[]
+  | TombowData[]
+  | ChitoseData[]
+  | DaimaruData[]
+  | BonmaxData[]
+  | SeleryData[]
+  | KarseeData[]
+  | ServoData[];
 };
 
 export const FilterInput: FC<Props> = ({

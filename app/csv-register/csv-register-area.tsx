@@ -1,16 +1,17 @@
 "use client";
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import CsvRegisterForm from "./csv-register-form";
+import { useStore } from "@/app/store";
+import LoadingSpinner from "@/components/spinner";
 
-type Props = {
-  data: any;
-};
-
-const CsvRegisterArea: FC<Props> = ({ data }) => {
-  console.log(data);
+const CsvRegisterArea: FC = () => {
+  const isLoading = useStore((state) => state.isLoading);
 
   return (
-    <div>
+    <div className="relative">
+      <div className="w-full  absolute flex items-center justify-center">
+        {isLoading && <LoadingSpinner />}
+      </div>
       <CsvRegisterForm />
     </div>
   );

@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/app/libs/prisma";
+import { BonmaxData } from "@/types";
 
 export async function GET(req: NextRequest) {
-  const prisma = new PrismaClient();
-
   const data = await prisma.bonmax.findMany({
     orderBy: {
       row: "asc",
@@ -16,7 +15,6 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
 
-  const prisma = new PrismaClient();
   const newBody = body.map((value: any, idx: number) => ({
     ...value,
     jan: String(value.jan),
@@ -24,15 +22,23 @@ export async function POST(req: NextRequest) {
   }));
 
   await prisma.bonmax.deleteMany();
-  await Promise.all(
-    newBody.map(async (data: any) => {
+  return await Promise.all(
+    newBody.map(async (data: BonmaxData) => {
       await prisma.bonmax.create({
         data: { ...data },
       });
     })
-  );
-  return NextResponse.json("result", { status: 201 });
+  ).then(async () => {
+    console.log("成功");
+    await prisma.$disconnect();
+    return NextResponse.json("result", { status: 201 });
+  }).catch(async (err) => {
+    console.error(err);
+    await prisma.$disconnect();
+    return NextResponse.json("失敗", { status: 500 });
+  });
 }
+
 
 // import axios from "axios";
 // import { NextRequest, NextResponse } from "next/server";

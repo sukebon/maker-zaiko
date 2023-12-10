@@ -10,9 +10,9 @@ import { KarseeTable } from "./karsee-table";
 import LoadingSpinner from "@/components/spinner";
 
 const KarseeArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<KarseeData>()
-  
-  const { data }: { data: KarseeData[] | undefined } = useFetch({
+  const { addArray, filterData, setFilterData } = useAddArray<KarseeData>();
+
+  const { data }: { data: KarseeData[] | undefined; } = useFetch({
     url: "/api/karsee",
     queryKey: "karsee",
   });

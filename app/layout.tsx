@@ -1,8 +1,6 @@
 import { Header } from "@/components/Header";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
-import Loading from "../components/spinner";
-import { Suspense } from "react";
 import SessionProvider from "@/providers/SessionProvider";
 import QueryProvider from "@/providers/queryProvider";
 import SideBar from "@/components/side-bar";

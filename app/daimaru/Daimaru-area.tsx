@@ -10,9 +10,9 @@ import { useAddArray } from "../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
 
 const DaimaruArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<DaimaruData>()
-  
-  const { data }: { data: DaimaruData[] | undefined } = useFetch({
+  const { addArray, filterData, setFilterData } = useAddArray<DaimaruData>();
+
+  const { data }: { data: DaimaruData[] | undefined; } = useFetch({
     url: "/api/daimaru",
     queryKey: "daimaru",
   });

@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
-
+console.log(body)
   const newBody = body.map((value: any, idx: number) => ({
     ...value,
     jan: String(value.jan),
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
   await prisma.selery.deleteMany();
   return await Promise.all(
     newBody.map(async (item: SeleryData) => {
-      await prisma.servo.create({
+      await prisma.selery.create({
         data: item,
       });
     })

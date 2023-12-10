@@ -2,6 +2,7 @@ import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import axios from "axios";
 import BonmaxArea from "./bonmax-area";
+import { PrismaClient } from "@prisma/client";
 
 const getCatalog = async (id: string) => {
   const res = await axios.get(
@@ -15,6 +16,12 @@ const getCatalog = async (id: string) => {
   return res.data;
 };
 
+const getData = async () => {
+  const prisma = new PrismaClient();
+  const data = await prisma.bonmax.findMany();
+  return data;
+};
+
 export default async function Bonmax() {
   const catalogFaceMix = await getCatalog("lh4sypndh");
   const catalogOfficeSS = await getCatalog("vcxclo8y7");
@@ -22,9 +29,12 @@ export default async function Bonmax() {
   const catalogLifemax = await getCatalog("qx2zikli7");
   const catalogRocky = await getCatalog("vlatytlxs");
 
+  const data = await getData();
+  if (!data) return;
+
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
-      <BonmaxArea />
+      <BonmaxArea data={data} />
       <CatalogArea>
         <Catalog catalogData={catalogFaceMix} />
         <Catalog catalogData={catalogOfficeSS} />

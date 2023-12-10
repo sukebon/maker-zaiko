@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+import React, { FC } from "react";
 import { useFetch } from "../hooks/useFetch";
-import { ServoData } from "@/types";
+import { SeleryData, ServoData } from "@/types";
 import { FilterInput } from "@/components/FilterInput";
 import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
@@ -9,14 +9,17 @@ import { useAddArray } from "../hooks/useAddArray";
 import { ServoTable } from "./Servo-table";
 import LoadingSpinner from "../../components/spinner";
 
-const ServoArea = () => {
+type Props = {
+  data: ServoData[];
+};
+
+const ServoArea: FC<Props> = ({ data }) => {
   const { addArray, filterData, setFilterData } = useAddArray<ServoData>();
 
-  const { data }: { data: ServoData[] | undefined; } = useFetch({
-    url: "/api/servo",
-    queryKey: "servo",
-  });
-
+  // const { data }: { data: ServoData[] | undefined; } = useFetch({
+  //   url: "/api/servo",
+  //   queryKey: "servo",
+  // });
   if (!data) return <LoadingSpinner />;
 
   const newData = data.map((d) => d.productNumber);

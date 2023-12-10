@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
+import React, { FC, useEffect } from "react";
 import CsvRegisterForm from "./csv-register-form";
-import { useFetch } from "../hooks/useFetch";
 
-const CsvRegisterArea = () => {
-  const { data } = useFetch({
-    url: "/api/selery",
-    queryKey: "selery",
-  });
+type Props = {
+  data: any;
+};
+
+const CsvRegisterArea: FC<Props> = ({ data }) => {
   console.log(data);
+
   return (
     <div>
       <CsvRegisterForm />

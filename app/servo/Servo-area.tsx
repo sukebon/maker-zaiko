@@ -8,13 +8,14 @@ import { Flex } from "@chakra-ui/react";
 import { useAddArray } from "../hooks/useAddArray";
 import { ServoTable } from "./Servo-table";
 import LoadingSpinner from "../../components/spinner";
+import { useAddToArray } from "../hooks/useAddToArray";
 
 type Props = {
   data: ServoData[];
 };
 
 const ServoArea: FC<Props> = ({ data }) => {
-  const { addArray, filterData, setFilterData } = useAddArray<ServoData>();
+  const { addArray, filterData, setFilterData } = useAddToArray<ServoData>();
 
   // const { data }: { data: ServoData[] | undefined; } = useFetch({
   //   url: "/api/servo",

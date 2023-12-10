@@ -10,8 +10,8 @@ import { useAddArray } from "../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
 
 const ChitoseArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<ChitoseData>()
-  const { data }: { data: ChitoseData[] | undefined } = useFetch({
+  const { addArray, filterData, setFilterData } = useAddArray<ChitoseData>();
+  const { data }: { data: ChitoseData[] | undefined; } = useFetch({
     url: "/api/chitose",
     queryKey: "chitose",
   });

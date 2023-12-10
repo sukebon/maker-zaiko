@@ -6,7 +6,7 @@ type Props = {
   fileName?: string;
   handleClick: (
     e: React.MouseEvent<HTMLButtonElement>,
-    csvFile: string | ArrayBuffer | null
+    csvFile: string[][] | null
   ) => void;
 };
 
@@ -15,7 +15,7 @@ const CsvRegisterInput: FC<Props> = ({
   fileName = null,
   handleClick,
 }) => {
-  const [fileUpload, setFileUpload] = useState<string | ArrayBuffer | null>(
+  const [fileUpload, setFileUpload] = useState<string[][] | null>(
     null
   );
   const [fileNameChecker, setFileNameChecker] = useState(false);
@@ -40,12 +40,14 @@ const CsvRegisterInput: FC<Props> = ({
     reader.readAsText(result, "Shift_JIS");
     reader.addEventListener("load", function () {
       if (!reader.result) return;
-      setFileUpload(reader.result.toString());
+      const csvFile = reader.result.toString();
+      let csvString = csvFile?.toString().split(/\r?\n/);
+      let csvArray = csvString.map((a) => a.replace(/(\")/g, "").split(","));
+      setFileUpload(csvArray);
     });
   };
 
   const TdStyle = "text-left px-3 py-2 border border-slate-300";
-
   return (
     <tr>
       <td className={`${TdStyle}`}>{title}</td>
@@ -55,10 +57,13 @@ const CsvRegisterInput: FC<Props> = ({
         {fileNameChecker && <div className="text-red-500">ファイル名が違います。</div>}
       </td>
       <td className={`${TdStyle}`}>
+
         <button
           disabled={fileUpload && !fileNameChecker ? false : true}
-          className="px-3 py-1 rounded bg-blue-800 text-white disabled:opacity-40 disabled:cursor-not-allowed"
-          onClick={(e) => handleClick(e, fileUpload)}
+          className="w-full px-3 py-1 rounded bg-blue-800 text-white disabled:opacity-40 disabled:cursor-not-allowed"
+          onClick={(e) => {
+            handleClick(e, fileUpload);
+          }}
         >
           送信
         </button>

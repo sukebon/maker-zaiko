@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { ServoData } from "@/types";
+import { prisma } from "@/app/libs/prisma";
 
 export async function GET(req: NextRequest) {
-  const prisma = new PrismaClient();
-
   const data = await prisma.servo.findMany({
     orderBy: {
       row: "asc",
@@ -15,27 +14,28 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
-
-  const prisma = new PrismaClient();
   const newBody = body.map((value: any, idx: number) => ({
     ...value,
     jan: String(value.jan),
     row: idx,
   }));
-  try {
-    await prisma.servo.deleteMany();
-    await Promise.all(
-      newBody.map(async (data: any) => {
-        await prisma.servo.create({
-          data: { ...data },
-        });
-      })
-    );
-    return NextResponse.json("result", { status: 201 });
-  } catch (err) {
-    console.error(err)
-    return NextResponse.json("result", { status: 409 });
-}
+
+  await prisma.servo.deleteMany();
+  return await Promise.all(
+    newBody.map(async (item: ServoData) => {
+      await prisma.servo.create({
+        data: item,
+      });
+    })
+  ).then(async () => {
+    console.log("成功");
+    await prisma.$disconnect();
+    return NextResponse.json("成功しました", { status: 201 });
+  }).catch(async (err) => {
+    console.error(err);
+    await prisma.$disconnect();
+    return NextResponse.json("失敗しました", { status: 500 });
+  });
 }
 
 

@@ -10,9 +10,9 @@ import { useAddArray } from "../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
 
 const ChikumaArea = () => {
-  const {addArray,filterData,setFilterData} = useAddArray<ChikumaData>()
+  const { addArray, filterData, setFilterData } = useAddArray<ChikumaData>();
 
-  const { data }: { data: ChikumaData[] | undefined } = useFetch({
+  const { data }: { data: ChikumaData[] | undefined; } = useFetch({
     url: "/api/chikuma",
     queryKey: "chkuma",
   });

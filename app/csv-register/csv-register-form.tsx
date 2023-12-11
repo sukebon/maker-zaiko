@@ -26,14 +26,7 @@ const CsvRegisterForm = () => {
       color: csv[6],
       size: csv[7],
     }));
-    await fetch("/api/selery",{
-      method:"POST",
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body:JSON.stringify({body})
-    })
-    // await fetchPost({ body, url: "/api/selery" });
+    await fetchPost({ body, url: "/api/selery" });
     setIsLoading(false);
   };
 

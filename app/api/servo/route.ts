@@ -1,7 +1,7 @@
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '1mb',
+      sizeLimit: '5mb',
     },
   },
   // Specifies the maximum allowed duration for this function to execute (in seconds)

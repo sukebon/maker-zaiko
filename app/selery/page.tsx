@@ -17,7 +17,11 @@ const getCatalog = async (id: string) => {
 };
 
 const getData = async () => {
-  const data = await prisma.selery.findMany();
+  const data = await prisma.selery.findMany({
+    orderBy: {
+      row: "asc",
+    },
+  });
   return data;
 };
 

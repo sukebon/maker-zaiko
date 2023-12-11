@@ -1,13 +1,3 @@
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
-  // Specifies the maximum allowed duration for this function to execute (in seconds)
-  maxDuration: 5,
-}
-
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/libs/prisma";
 import { SeleryData } from "@/types";

@@ -18,7 +18,11 @@ const getCatalog = async (id: string) => {
 
 const getData = async () => {
   const prisma = new PrismaClient();
-  const data = await prisma.bonmax.findMany();
+  const data = await prisma.bonmax.findMany({
+    orderBy: {
+      row: "asc",
+    },
+  });
   return data;
 };
 

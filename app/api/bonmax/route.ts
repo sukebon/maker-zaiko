@@ -38,14 +38,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json("失敗", { status: 500 });
   });
 }
-
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '5mb',
-    },
-  },
-  // Specifies the maximum allowed duration for this function to execute (in seconds)
-  maxDuration: 5,
-}
-

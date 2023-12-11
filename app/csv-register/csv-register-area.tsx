@@ -1,7 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import CsvRegisterForm from "./csv-register-form";
-import { useStore } from "@/app/store";
+import { useStore } from "@/store";
 import LoadingSpinner from "@/components/spinner";
 
 const CsvRegisterArea: FC = () => {

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import CsvRegisterInput from "./csv-register-input";
-import { useFetchPost } from "../hooks/useFetchPost";
-import { useStore } from "@/app/store";
+import { useFetchPost } from "../../hooks/useFetchPost";
+import { useStore } from "@/store";
 
 const CsvRegisterForm = () => {
   const { fetchPost } = useFetchPost();
@@ -28,8 +28,6 @@ const CsvRegisterForm = () => {
     }));
     await fetchPost({ body, url: "/api/selery" });
     setIsLoading(false);
-    //   const { mutate } = useMutationSelery;
-    //   mutate({ params: body, url: "/api/selery" });
   };
 
   const handleClickBonmax = async (
@@ -104,7 +102,7 @@ const CsvRegisterForm = () => {
               fileName="BM_DMHK-ZAIKO"
               handleClick={handleClickBonmax}
             />
-            <CsvRegisterInput title="サーヴォ" handleClick={handleClickServo} />
+            <CsvRegisterInput title="サーヴォ" fileName="zaiko" handleClick={handleClickServo} />
           </tbody>
         </table>
       </form>

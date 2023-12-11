@@ -15,25 +15,21 @@ const CsvRegisterInput: FC<Props> = ({
   fileName = null,
   handleClick,
 }) => {
-  const [fileUpload, setFileUpload] = useState<string[][] | null>(
-    null
-  );
+  const [csvFile, setCsvFile] = useState<string[][] | null>(null);
   const [fileNameChecker, setFileNameChecker] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) {
-      setFileUpload(null);
+      setCsvFile(null);
       return;
     }
 
     const result = e.target.files[0];
-
-    if (fileName) {
-      if (fileName + ".csv" !== result.name) {
-        setFileNameChecker(true);
-      } else {
-        setFileNameChecker(false);
-      }
+    const regex = new RegExp(`${fileName}*`);
+    if (regex.test(result.name)) {
+      setFileNameChecker(false);
+    } else {
+      setFileNameChecker(true);
     }
 
     let reader = new FileReader();
@@ -43,7 +39,7 @@ const CsvRegisterInput: FC<Props> = ({
       const csvFile = reader.result.toString();
       let csvString = csvFile?.toString().split(/\r?\n/);
       let csvArray = csvString.map((a) => a.replace(/(\")/g, "").split(","));
-      setFileUpload(csvArray);
+      setCsvFile(csvArray);
     });
   };
 
@@ -54,15 +50,16 @@ const CsvRegisterInput: FC<Props> = ({
       <td className={`${TdStyle}`}>{fileName}</td>
       <td className={`${TdStyle}`}>
         <input type="file" accept=".csv" onChange={handleFileChange} />
-        {fileNameChecker && <div className="text-red-500">ファイル名が違います。</div>}
+        {fileNameChecker && (
+          <div className="text-red-500">ファイル名が違います。</div>
+        )}
       </td>
       <td className={`${TdStyle}`}>
-
         <button
-          disabled={fileUpload && !fileNameChecker ? false : true}
+          disabled={csvFile && !fileNameChecker ? false : true}
           className="w-full px-3 py-1 rounded bg-blue-800 text-white disabled:opacity-40 disabled:cursor-not-allowed"
           onClick={(e) => {
-            handleClick(e, fileUpload);
+            handleClick(e, csvFile);
           }}
         >
           送信

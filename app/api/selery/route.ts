@@ -17,7 +17,7 @@
 // }
 
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/app/libs/prisma";
+import { prisma } from "@/libs/prisma";
 import { SeleryData } from "@/types";
 
 export async function GET(req: NextRequest) {

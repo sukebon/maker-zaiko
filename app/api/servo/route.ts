@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ServoData } from "@/types";
-import { prisma } from "@/app/libs/prisma";
+import { prisma } from "@/libs/prisma";
 
 export async function GET(req: NextRequest) {
   const data = await prisma.servo.findMany({

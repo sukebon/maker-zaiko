@@ -2,7 +2,7 @@ import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import axios from "axios";
 import SeleryArea from "./selery-area";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/libs/prisma";
 
 const getCatalog = async (id: string) => {
   const res = await axios.get(
@@ -17,11 +17,9 @@ const getCatalog = async (id: string) => {
 };
 
 const getData = async () => {
-  const prisma = new PrismaClient();
   const data = await prisma.selery.findMany();
   return data;
 };
-
 
 export default async function Chitose() {
   const catalogSelerySS = await getCatalog("yrwob4gte");

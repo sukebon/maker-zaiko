@@ -1,25 +1,31 @@
-import axios from "axios";
-import { NextResponse } from "next/server";
-import { parse } from "papaparse";
+import { prisma } from "@/libs/prisma";
+import { KarseeData } from "@/types";
+import { NextRequest, NextResponse } from "next/server";
 
-const fileParser = (csvData: string) => {
-  const result = parse(csvData, { header: true });
-  return result.data;
-};
+export async function POST(req: NextRequest) {
+  const { body } = await req.json();
+  const pattern = /(【\d*】)/g;
+  const newBody = body.map((value: KarseeData, idx: number) => ({
+    ...value,
+    jan: String(value.jan),
+    row: idx,
+    color:value?.color?.replace(pattern,"")
+  }));
 
-export async function GET() {
-  const url =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=648091428&single=true&output=csv";
-  const res = await axios.get(url);
-  const dataList = fileParser(await res.data);
-  const result = dataList.map((data: any) => {
-    const pattern = /(【|】|\d)/g;
-    const color = data["カラー名称"].replace(pattern, "");
-    return {
-      ...data,
-      品番: data["品番"] + "-" + data["カラー"],
-      カラー名称: color,
-    };
+  await prisma.karsee.deleteMany();
+  return await Promise.all(
+    newBody.map(async (item: KarseeData) => {
+      await prisma.karsee.create({
+        data: item,
+      });
+    })
+  ).then(async () => {
+    console.log("成功");
+    await prisma.$disconnect();
+    return NextResponse.json("成功しました", { status: 201 });
+  }).catch(async (err) => {
+    console.error(err);
+    await prisma.$disconnect();
+    return NextResponse.json("失敗しました", { status: 500 });
   });
-  return NextResponse.json(result, { status: 200 });
 }

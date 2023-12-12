@@ -1,7 +1,7 @@
 "use client";
-import { Box, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { DaimaruData, KarseeData } from "@/types";
+import { KarseeData } from "@/types";
 import TableArea from "@/components/table-area";
 
 type Props = {
@@ -27,14 +27,14 @@ export const KarseeTable: FC<Props> = ({ filterData }) => {
             <Tbody>
               {filterData?.map((data: KarseeData, index: number) => (
                 <Tr key={index}>
-                  <Td>{data.品番}</Td>
-                  <Td>{data.アイテム名称}</Td>
-                  <Td>{data.カラー名称}</Td>
-                  <Td>{data.サイズ}</Td>
+                  <Td>{data.productNumber}</Td>
+                  <Td>{data.productName}</Td>
+                  <Td>{data.color}</Td>
+                  <Td>{data.size}</Td>
                   <Td isNumeric>
-                    {data.次回上がり予定日 ? "仕掛数 (" + data.在庫数 + ")" : data.在庫数}
+                    {data.nextTimeDate ? "仕掛数 (" + data.stock + ")" : data.stock}
                   </Td>
-                  <Td>{data.次回上がり予定日}</Td>
+                  <Td>{data.nextTimeDate}</Td>
                 </Tr>
               ))}
             </Tbody>

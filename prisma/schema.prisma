@@ -61,7 +61,6 @@ model Karsee {
   productNumber String?
   productName   String?
   color         String?
-  colorName     String?
   size          String?
   stock         Int?
   nextTimeDate  String?

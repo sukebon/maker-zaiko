@@ -77,7 +77,7 @@ const CsvRegisterForm = () => {
     setIsLoading(false);
   };
 
-  
+
   const handleClickChikuma = async (
     e: React.MouseEvent<HTMLButtonElement>,
     csvFile: string[][] | null
@@ -91,13 +91,35 @@ const CsvRegisterForm = () => {
       productNumber: csv[0],
       size: csv[2],
       stock: Number(csv[3]),
-      inspectStock:Number(csv[4]),
+      inspectStock: Number(csv[4]),
       nextTimeDate: csv[5],
       nextTimeStock: Number(csv[6]),
       nextTimeDate2: csv[7],
       nextTimeStock2: Number(csv[8]),
     }));
     await fetchPost({ body, url: "/api/chikuma" });
+    setIsLoading(false);
+  };
+
+  const handleClickKarsee = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    csvFile: string[][] | null
+  ) => {
+    e.preventDefault();
+    setIsLoading(true);
+    if (!csvFile) return;
+    csvFile.shift();
+    const body = csvFile.map((csv) => ({
+      jan: Number(csv[4]),
+      productNumber: csv[1] + "-" + csv[2],
+      productName: csv[9],
+      size: csv[3],
+      stock: Number(csv[6]),
+      color: csv[11],
+      nextTimeDate: csv[5],
+      brand: csv[0]
+    }));
+    await fetchPost({ body, url: "/api/karsee" });
     setIsLoading(false);
   };
 
@@ -128,6 +150,7 @@ const CsvRegisterForm = () => {
             />
             <CsvRegisterInput title="サーヴォ" fileName="zaiko" handleClick={handleClickServo} />
             <CsvRegisterInput title="チクマ" fileName="前日在庫データ" handleClick={handleClickChikuma} />
+            <CsvRegisterInput title="カーシーカシマ" fileName="在庫データ" handleClick={handleClickKarsee} />
           </tbody>
         </table>
       </form>

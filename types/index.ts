@@ -20,6 +20,18 @@ export type TombowData = {
 };
 
 export type ChitoseData = {
+  // id: string;
+  // row: number | null;
+  // jan: string | null;
+  // productNumber: string | null;
+  // productName: string | null;
+  // color: string | null;
+  // size: string | null;
+  // stock: number | null;
+  // nextTimeDate: string | null;
+  // nextTimeStock: number | null;
+  // nextTimeDate2: string | null;
+  // nextTimeStock2: number | null;
   品番: string;
   品名: string;
   カラー名: string;
@@ -76,18 +88,16 @@ export type SeleryData = {
 };
 
 export type KarseeData = {
-  ブランド: string;
-  品番: string;
-  アイテム名称: string;
-  カラー: string;
-  サイズ: string;
-  JANコード: string;
-  次回上がり予定日: string;
-  在庫数: string;
-  作成日付: string;
-  作成日付時刻: string;
-  品名: string;
-  カラー名称: string;
+  id: string;
+  row: number | null;
+  jan: string | null;
+  productNumber: string | null;
+  productName: string | null;
+  color: string | null;
+  size: string | null;
+  stock: number | null;
+  nextTimeDate: string | null;
+  brand: string | null;
 };
 
 export type ServoData = {

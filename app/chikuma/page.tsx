@@ -1,8 +1,6 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { ChikumaData } from "@/types";
 import axios from "axios";
-import { parse } from "papaparse";
 import ChikumaArea from "./chikuma-area";
 import { prisma } from "@/libs/prisma";
 

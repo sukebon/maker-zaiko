@@ -1,24 +1,26 @@
 "use client";
-import React from "react";
-import { useFetch } from "@/hooks/useFetch";
+import React, { FC } from "react";
 import { ChikumaData } from "@/types";
 import { ChikumaTable } from "./chikuma-table";
-import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddArray } from "../../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
+import { useAddToArray } from "@/hooks/useAddToArray";
 
-const ChikumaArea = () => {
-  const { addArray, filterData, setFilterData } = useAddArray<ChikumaData>();
+type Props = {
+  data: ChikumaData[];
+};
 
-  const { data }: { data: ChikumaData[] | undefined } = useFetch({
-    url: "/api/chikuma",
-    queryKey: "chkuma",
-  });
+const ChikumaArea: FC<Props> = ({ data }) => {
+  const { addArray, filterData, setFilterData } = useAddToArray<ChikumaData>();
+
+  // const { data }: { data: ChikumaData[] | undefined } = useFetch({
+  //   url: "/api/chikuma",
+  //   queryKey: "chkuma",
+  // });
 
   if (!data) return <LoadingSpinner />;
-  const newData = data.map((d) => d.品番);
+  const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 
   return (

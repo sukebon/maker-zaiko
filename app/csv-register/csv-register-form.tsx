@@ -77,6 +77,30 @@ const CsvRegisterForm = () => {
     setIsLoading(false);
   };
 
+  
+  const handleClickChikuma = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    csvFile: string[][] | null
+  ) => {
+    e.preventDefault();
+    setIsLoading(true);
+    if (!csvFile) return;
+    csvFile.shift();
+    const body = csvFile.map((csv) => ({
+      jan: Number(csv[9]),
+      productNumber: csv[0],
+      size: csv[2],
+      stock: Number(csv[3]),
+      inspectStock:Number(csv[4]),
+      nextTimeDate: csv[5],
+      nextTimeStock: Number(csv[6]),
+      nextTimeDate2: csv[7],
+      nextTimeStock2: Number(csv[8]),
+    }));
+    await fetchPost({ body, url: "/api/chikuma" });
+    setIsLoading(false);
+  };
+
   const ThStyle = "text-left px-3 py-2 border border-slate-300";
 
   return (
@@ -103,6 +127,7 @@ const CsvRegisterForm = () => {
               handleClick={handleClickBonmax}
             />
             <CsvRegisterInput title="サーヴォ" fileName="zaiko" handleClick={handleClickServo} />
+            <CsvRegisterInput title="チクマ" fileName="前日在庫データ" handleClick={handleClickChikuma} />
           </tbody>
         </table>
       </form>

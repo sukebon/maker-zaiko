@@ -67,3 +67,17 @@ model Karsee {
   nextTimeDate  String?
   brand         String?
 }
+
+model Chikuma {
+  id             String  @id @default(uuid())
+  row            Int?
+  jan            String?
+  productNumber  String?
+  size           String?
+  stock          Int?
+  inspectStock   Int?
+  nextTimeDate   String?
+  nextTimeStock  Int?
+  nextTimeDate2  String?
+  nextTimeStock2 Int?
+}

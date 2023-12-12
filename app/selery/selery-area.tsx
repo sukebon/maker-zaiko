@@ -1,10 +1,8 @@
 "use client";
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { SeleryTable } from "./selery-table";
-import { useFetch } from "../../hooks/useFetch";
 import { SeleryData } from "@/types";
 import { FilterInput } from "@/components/FilterInput";
-import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import LoadingSpinner from "../../components/spinner";
 import { useAddToArray } from "../../hooks/useAddToArray";

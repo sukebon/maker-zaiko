@@ -1,12 +1,15 @@
 export type ChikumaData = {
-  品番: string;
-  サイズ: string;
-  現物在庫: string;
-  入荷検品中: string;
-  加工品納期１: string;
-  加工品数量１: string;
-  加工品納期２: string;
-  加工品数量２: string;
+  id: string;
+  row: number | null;
+  jan: string | null;
+  productNumber: string | null;
+  size: string | null;
+  stock: number | null;
+  inspectStock: number | null;
+  nextTimeStock: number | null;
+  nextTimeDate: string | null;
+  nextTimeStock2: number | null;
+  nextTimeDate2: string | null;
 };
 
 export type TombowData = {

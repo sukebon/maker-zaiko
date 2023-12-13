@@ -20,7 +20,11 @@ const getData = async () => {
   const data = await prisma.chikuma.findMany({
     orderBy: {
       row: "asc",
-    },
+    },where :{
+      productNumber: {
+        notIn:[""]
+      }
+    }
   });
   return data;
 };

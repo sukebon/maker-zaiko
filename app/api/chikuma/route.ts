@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
     ...value,
     jan: String(value.jan),
     row: idx,
+    size:value.size?.trim(),
     productNumber: value?.productNumber?.trim(),
   }));
 

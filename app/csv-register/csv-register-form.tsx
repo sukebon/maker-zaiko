@@ -77,7 +77,6 @@ const CsvRegisterForm = () => {
     setIsLoading(false);
   };
 
-
   const handleClickChikuma = async (
     e: React.MouseEvent<HTMLButtonElement>,
     csvFile: string[][] | null
@@ -117,9 +116,36 @@ const CsvRegisterForm = () => {
       stock: Number(csv[6]),
       color: csv[11],
       nextTimeDate: csv[5],
-      brand: csv[0]
+      brand: csv[0],
     }));
     await fetchPost({ body, url: "/api/karsee" });
+    setIsLoading(false);
+  };
+
+  const handleClickChitose = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    csvFile: string[][] | null
+  ) => {
+    e.preventDefault();
+    setIsLoading(true);
+    if (!csvFile) return;
+    csvFile.shift();
+    const body = csvFile.map((csv) => ({
+      jan: Number(csv[0]),
+      productNumber: csv[1],
+      productName: csv[2],
+      color: csv[4],
+      size: csv[5],
+      stock: Number(csv[6]),
+      externalStock: Number(csv[7]),
+      nextTimeDate: csv[8],
+      nextTimeStock: Number(csv[9]),
+      nextTimeDate2: csv[10],
+      nextTimeStock2: Number(csv[11]),
+      nextTimeDate3: csv[12],
+      nextTimeStock3: Number(csv[13]),
+    }));
+    await fetchPost({ body, url: "/api/chitose" });
     setIsLoading(false);
   };
 
@@ -148,9 +174,26 @@ const CsvRegisterForm = () => {
               fileName="BM_DMHK-ZAIKO"
               handleClick={handleClickBonmax}
             />
-            <CsvRegisterInput title="サーヴォ" fileName="zaiko" handleClick={handleClickServo} />
-            <CsvRegisterInput title="チクマ" fileName="前日在庫データ" handleClick={handleClickChikuma} />
-            <CsvRegisterInput title="カーシーカシマ" fileName="在庫データ" handleClick={handleClickKarsee} />
+            <CsvRegisterInput
+              title="サーヴォ"
+              fileName="zaiko"
+              handleClick={handleClickServo}
+            />
+            <CsvRegisterInput
+              title="チクマ"
+              fileName="前日在庫データ"
+              handleClick={handleClickChikuma}
+            />
+            <CsvRegisterInput
+              title="カーシーカシマ"
+              fileName="在庫データ"
+              handleClick={handleClickKarsee}
+            />
+            <CsvRegisterInput
+              title="チトセ"
+              fileName="hinban"
+              handleClick={handleClickChitose}
+            />
           </tbody>
         </table>
       </form>

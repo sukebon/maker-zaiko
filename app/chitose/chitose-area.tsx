@@ -1,22 +1,21 @@
 "use client";
-import { useFetch } from "@/hooks/useFetch";
 import { ChitoseData } from "@/types";
-import React from "react";
+import React, { FC } from "react";
 import { ChitoseTable } from "./chitose-table";
-import { Providers } from "../providers";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddArray } from "../../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
+import { useAddToArray } from "@/hooks/useAddToArray";
 
-const ChitoseArea = () => {
-  const { addArray, filterData, setFilterData } = useAddArray<ChitoseData>();
-  const { data }: { data: ChitoseData[] | undefined } = useFetch({
-    url: "/api/chitose",
-    queryKey: "chitose",
-  });
+type Props = {
+  data:ChitoseData[]
+}
+
+const ChitoseArea:FC<Props> = ({data}) => {
+  const { addArray, filterData, setFilterData } = useAddToArray<ChitoseData>();
   if (!data) return <LoadingSpinner />;
-  const newData = data.map((d) => d.品番);
+
+  const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 
   return (

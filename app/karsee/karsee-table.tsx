@@ -22,6 +22,8 @@ export const KarseeTable: FC<Props> = ({ filterData }) => {
                 <Th>サイズ</Th>
                 <Th>在庫数</Th>
                 <Th>次回上がり予定</Th>
+                <Th>ブランド名</Th>
+                <Th>JANコード</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -30,11 +32,13 @@ export const KarseeTable: FC<Props> = ({ filterData }) => {
                   <Td>{data.productNumber}</Td>
                   <Td>{data.productName}</Td>
                   <Td>{data.color}</Td>
-                  <Td>{data.size}</Td>
+                  <Td textAlign="center">{data.size}</Td>
                   <Td isNumeric>
                     {data.nextTimeDate ? "仕掛数 (" + data.stock + ")" : data.stock}
                   </Td>
                   <Td>{data.nextTimeDate}</Td>
+                  <Td>{data.brand}</Td>
+                  <Td>{data.jan}</Td>
                 </Tr>
               ))}
             </Tbody>

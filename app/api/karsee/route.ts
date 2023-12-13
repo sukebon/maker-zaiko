@@ -1,5 +1,6 @@
 import { prisma } from "@/libs/prisma";
 import { KarseeData } from "@/types";
+import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -9,7 +10,8 @@ export async function POST(req: NextRequest) {
     ...value,
     jan: String(value.jan),
     row: idx,
-    color:value?.color?.replace(pattern,"")
+    color:value?.color?.replace(pattern,""),
+    createdAt: format(new Date(),"yyyy/MM/dd HH:mm:ss")
   }));
 
   await prisma.karsee.deleteMany();

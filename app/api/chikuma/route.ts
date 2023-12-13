@@ -1,5 +1,6 @@
 import { prisma } from "@/libs/prisma";
 import { ChikumaData } from "@/types";
+import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -11,6 +12,7 @@ export async function POST(req: NextRequest) {
     row: idx,
     size:value.size?.trim(),
     productNumber: value?.productNumber?.trim(),
+    createdAt: format(new Date(),"yyyy/MM/dd HH:mm:ss")
   }));
 
   await prisma.chikuma.deleteMany();

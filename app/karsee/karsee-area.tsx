@@ -16,10 +16,6 @@ type Props = {
 const KarseeArea: FC<Props> = ({ data }) => {
   const { addArray, filterData, setFilterData } = useAddToArray<KarseeData>();
 
-  // const { data }: { data: KarseeData[] | undefined } = useFetch({
-  //   url: "/api/karsee",
-  //   queryKey: "karsee",
-  // });
   if (!data) return <LoadingSpinner />;
   const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));

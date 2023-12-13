@@ -13,7 +13,7 @@ datasource db {
 
 model Selery {
   id            String  @id @default(uuid())
-  row           Int?
+  row           Int
   jan           String?
   stock         Int?
   productNumber String?
@@ -22,11 +22,12 @@ model Selery {
   size          String?
   nextTimeStock Int?
   nextTimeDate  String?
+  createdAt      String?
 }
 
 model Bonmax {
   id            String  @id @default(uuid())
-  row           Int?
+  row           Int
   jan           String?
   productNumber String?
   productName   String?
@@ -37,11 +38,12 @@ model Bonmax {
   nextTimeStock Int?
   nextTimeDate  String?
   leadTime      String?
+  createdAt      String?
 }
 
 model Servo {
   id             String  @id @default(uuid())
-  row            Int?
+  row            Int
   jan            String?
   productNumber  String?
   productName    String?
@@ -52,11 +54,12 @@ model Servo {
   nextTimeStock  Int?
   nextTimeDate2  String?
   nextTimeStock2 Int?
+  createdAt      String?
 }
 
 model Karsee {
   id            String  @id @default(uuid())
-  row           Int?
+  row           Int
   jan           String?
   productNumber String?
   productName   String?
@@ -65,11 +68,12 @@ model Karsee {
   stock         Int?
   nextTimeDate  String?
   brand         String?
+  createdAt      String?
 }
 
 model Chikuma {
   id             String  @id @default(uuid())
-  row            Int?
+  row            Int
   jan            String?
   productNumber  String?
   size           String?
@@ -79,4 +83,24 @@ model Chikuma {
   nextTimeStock  Int?
   nextTimeDate2  String?
   nextTimeStock2 Int?
+  createdAt      String?
+}
+
+model Chitose {
+  id             String  @id @default(uuid())
+  row            Int
+  jan            String?
+  productNumber  String?
+  productName    String?
+  color          String?
+  size           String?
+  stock          Int?
+  externalStock  Int?
+  nextTimeDate   String?
+  nextTimeStock  Int?
+  nextTimeDate2  String?
+  nextTimeStock2 Int?
+  nextTimeDate3  String?
+  nextTimeStock3 Int?
+  createdAt      String?
 }

@@ -1,51 +1,3 @@
-export type ChikumaData = {
-  id: string;
-  row: number | null;
-  jan: string | null;
-  productNumber: string | null;
-  size: string | null;
-  stock: number | null;
-  inspectStock: number | null;
-  nextTimeStock: number | null;
-  nextTimeDate: string | null;
-  nextTimeStock2: number | null;
-  nextTimeDate2: string | null;
-};
-
-export type TombowData = {
-  品番: string;
-  //  色:string;
-  サイズ: string;
-  在庫数: string;
-};
-
-export type ChitoseData = {
-  // id: string;
-  // row: number | null;
-  // jan: string | null;
-  // productNumber: string | null;
-  // productName: string | null;
-  // color: string | null;
-  // size: string | null;
-  // stock: number | null;
-  // nextTimeDate: string | null;
-  // nextTimeStock: number | null;
-  // nextTimeDate2: string | null;
-  // nextTimeStock2: number | null;
-  品番: string;
-  品名: string;
-  カラー名: string;
-  サイズ名: string;
-  在庫数: string;
-  外部倉庫在庫数: string;
-  仕掛１日付: string;
-  仕掛１数量: string;
-  仕掛２日付: string;
-  仕掛２数量: string;
-  仕掛３日付: string;
-  仕掛３数量: string;
-};
-
 export type DaimaruData = {
   品番: string;
   商品名: string;
@@ -59,9 +11,50 @@ export type DaimaruData = {
   仕掛: string;
 };
 
+export type TombowData = {
+  品番: string;
+  //  色:string;
+  サイズ: string;
+  在庫数: string;
+};
+
+export type ChikumaData = {
+  id: string;
+  row: number;
+  jan: string | null;
+  productNumber: string | null;
+  size: string | null;
+  stock: number | null;
+  inspectStock: number | null;
+  nextTimeStock: number | null;
+  nextTimeDate: string | null;
+  nextTimeStock2: number | null;
+  nextTimeDate2: string | null;
+  createdAt: string | null;
+};
+
+export type ChitoseData = {
+  id: string;
+  row: number;
+  jan: string | null;
+  productNumber: string | null;
+  productName: string | null;
+  color: string | null;
+  size: string | null;
+  stock: number | null;
+  externalStock: number | null;
+  nextTimeDate: string | null;
+  nextTimeStock: number | null;
+  nextTimeDate2: string | null;
+  nextTimeStock2: number | null;
+  nextTimeDate3: string | null;
+  nextTimeStock3: number | null;
+  createdAt: string | null;
+};
+
 export type BonmaxData = {
   id: string;
-  row: number | null;
+  row: number;
   jan: string | null;
   productNumber: string | null;
   productName: string | null;
@@ -72,11 +65,12 @@ export type BonmaxData = {
   nextTimeStock: number | null;
   nextTimeDate: string | null;
   leadTime: string | null;
+  createdAt: string | null;
 };
 
 export type SeleryData = {
   id: string;
-  row: number | null;
+  row: number;
   jan: string | null;
   stock: number | null;
   productNumber: string | null;
@@ -85,11 +79,12 @@ export type SeleryData = {
   size: string | null;
   nextTimeStock: number | null;
   nextTimeDate: string | null;
+  createdAt: string | null;
 };
 
 export type KarseeData = {
   id: string;
-  row: number | null;
+  row: number;
   jan: string | null;
   productNumber: string | null;
   productName: string | null;
@@ -98,11 +93,12 @@ export type KarseeData = {
   stock: number | null;
   nextTimeDate: string | null;
   brand: string | null;
+  createdAt: string | null;
 };
 
 export type ServoData = {
   id: string;
-  row: number | null;
+  row: number;
   jan: string | null;
   productNumber: string | null;
   productName: string | null;
@@ -113,4 +109,5 @@ export type ServoData = {
   nextTimeStock: number | null;
   nextTimeDate2: string | null;
   nextTimeStock2: number | null;
+  createdAt: string | null;
 };

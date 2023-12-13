@@ -12,7 +12,7 @@ export const ServoTable: FC<Props> = ({ filterData }) => {
   return (
     <>
       {filterData.length > 0 && (
-        <TableArea maxW="1000">
+        <TableArea maxW="1200">
           <Table size="sm" variant="simple" bg="white">
             <Thead position="sticky" top={0} zIndex="docked" bg="white">
               <Tr>
@@ -25,6 +25,7 @@ export const ServoTable: FC<Props> = ({ filterData }) => {
                 <Th>入荷予定①予定数</Th>
                 <Th>入荷予定②日付</Th>
                 <Th>入荷予定②予定数</Th>
+                <Th>JANコード</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -39,7 +40,7 @@ export const ServoTable: FC<Props> = ({ filterData }) => {
                   <Td isNumeric>{data.nextTimeStock}</Td>
                   <Td textAlign="center">{data.nextTimeDate2}</Td>
                   <Td isNumeric>{data.nextTimeStock2}</Td>
-                  {/* <Td>{data.JANコード}</Td> */}
+                  <Td>{data.jan}</Td>
                 </Tr>
               ))}
             </Tbody>

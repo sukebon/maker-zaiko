@@ -16,11 +16,6 @@ type Props = {
 const BonmaxArea: FC<Props> = ({ data }) => {
   const { addArray, filterData, setFilterData } = useAddToArray<BonmaxData>();
 
-  // const { data }: { data: BonmaxData[] | undefined } = useFetch({
-  //   url: "/api/bonmax",
-  //   queryKey: "bonmax",
-  // });
-
   if (!data) return <LoadingSpinner />;
 
   const newData = data.map((d) => d.productNumber);

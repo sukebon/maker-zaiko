@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/libs/prisma";
 import { BonmaxData } from "@/types";
+import { format } from "date-fns";
 
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
@@ -9,6 +10,7 @@ export async function POST(req: NextRequest) {
     ...value,
     jan: String(value.jan),
     row: idx,
+    createdAt: format(new Date(),"yyyy/MM/dd HH:mm:ss")
   }));
 
   await prisma.bonmax.deleteMany();

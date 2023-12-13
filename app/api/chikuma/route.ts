@@ -2,22 +2,14 @@ import { prisma } from "@/libs/prisma";
 import { ChikumaData } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
-// export async function GET(req: NextRequest) {
-//   const url =
-//     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=0&single=true&output=csv";
-//   const res = await axios.get(url);
-//   const data = fileParser(await res.data);
-//   return NextResponse.json(data, { status: 200 });
-// }
-
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
 
-  const newBody = body.map((value: any, idx: number) => ({
+  const newBody = body.map((value: ChikumaData, idx: number) => ({
     ...value,
     jan: String(value.jan),
     row: idx,
-    productNumber: value.productNumber.trim(),
+    productNumber: value?.productNumber?.trim(),
   }));
 
   await prisma.chikuma.deleteMany();

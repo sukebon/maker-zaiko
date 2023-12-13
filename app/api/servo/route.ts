@@ -2,19 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { ServoData } from "@/types";
 import { prisma } from "@/libs/prisma";
 
-export async function GET(req: NextRequest) {
-  const data = await prisma.servo.findMany({
-    orderBy: {
-      row: "asc",
-    },
-  });
-
-  return NextResponse.json(data, { status: 200 });
-}
-
 export async function POST(req: NextRequest) {
   const { body } = await req.json();
-  const newBody = body.map((value: any, idx: number) => ({
+  const newBody = body.map((value: ServoData, idx: number) => ({
     ...value,
     jan: String(value.jan),
     row: idx,

@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
+  // provider = "postgresql"
+  // url      = env("DATABASE_URL")
   provider = "sqlite"
-  // url      = "file:./dev.db?connection_limit=1"
   url      = env("DATABASE_URL")
 }
 

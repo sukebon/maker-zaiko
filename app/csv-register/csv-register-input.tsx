@@ -24,16 +24,16 @@ const CsvRegisterInput: FC<Props> = ({
       return;
     }
 
-    const result = e.target.files[0];
+    const file = e.target.files[0];
     const regex = new RegExp(`${fileName}*`);
-    if (regex.test(result.name)) {
+    if (regex.test(file.name)) {
       setFileNameChecker(false);
     } else {
       setFileNameChecker(true);
     }
 
     let reader = new FileReader();
-    reader.readAsText(result, "Shift_JIS");
+    reader.readAsText(file, "Shift_JIS");
     reader.addEventListener("load", function () {
       if (!reader.result) return;
       const csvFile = reader.result.toString();

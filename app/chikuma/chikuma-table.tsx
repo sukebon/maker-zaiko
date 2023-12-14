@@ -8,7 +8,6 @@ type Props = {
   filterData: ChikumaData[];
 };
 
-
 export const ChikumaTable: FC<Props> = ({ filterData }) => {
   return (
     <>
@@ -32,7 +31,7 @@ export const ChikumaTable: FC<Props> = ({ filterData }) => {
               {filterData?.map((data, index: number) => (
                 <Tr key={index}>
                   <Td>{data.productNumber}</Td>
-                  <Td>{data.size}</Td>
+                  <Td textAlign="center">{data.size}</Td>
                   <Td isNumeric>{data.stock}</Td>
                   <Td isNumeric>{data.inspectStock}</Td>
                   <Td>{data.nextTimeDate !== "0" && data.nextTimeDate}</Td>

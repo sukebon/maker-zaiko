@@ -1,23 +1,26 @@
 "use client";
-import { useFetch } from "@/hooks/useFetch";
 import { TomboTable } from "@/app/tombow/tombo-table";
 import { TombowData } from "@/types";
-import React from "react";
+import React, { FC } from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddArray } from "../../hooks/useAddArray";
 import LoadingSpinner from "@/components/spinner";
+import { useAddToArray } from "@/hooks/useAddToArray";
 
-const TombowArea = () => {
-  const { addArray, filterData, setFilterData } = useAddArray<TombowData>();
+type Props = {
+  data: TombowData[];
+};
 
-  const { data }: { data: TombowData[] | undefined } = useFetch({
-    url: "/api/tombow",
-    queryKey: "tombow",
-  });
+const TombowArea: FC<Props> = ({ data }) => {
+  const { addArray, filterData, setFilterData } = useAddToArray<TombowData>();
+
+  // const { data }: { data: TombowData[] | undefined } = useFetch({
+  //   url: "/api/tombow",
+  //   queryKey: "tombow",
+  // });
 
   if (!data) return <LoadingSpinner />;
-  const newData = data.map((d) => d.品番);
+  const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
 
   return (

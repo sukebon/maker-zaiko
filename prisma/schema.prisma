@@ -23,7 +23,7 @@ model Selery {
   size          String?
   nextTimeStock Int?
   nextTimeDate  String?
-  createdAt      String?
+  createdAt     String?
 }
 
 model Bonmax {
@@ -39,7 +39,7 @@ model Bonmax {
   nextTimeStock Int?
   nextTimeDate  String?
   leadTime      String?
-  createdAt      String?
+  createdAt     String?
 }
 
 model Servo {
@@ -69,7 +69,7 @@ model Karsee {
   stock         Int?
   nextTimeDate  String?
   brand         String?
-  createdAt      String?
+  createdAt     String?
 }
 
 model Chikuma {
@@ -104,4 +104,15 @@ model Chitose {
   nextTimeDate3  String?
   nextTimeStock3 Int?
   createdAt      String?
+}
+
+model Tombow {
+  id            String  @id @default(uuid())
+  row           Int
+  jan           String?
+  productNumber String?
+  color         String?
+  size          String?
+  stock         Int?
+  createdAt     String?
 }

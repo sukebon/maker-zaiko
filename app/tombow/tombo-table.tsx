@@ -1,5 +1,5 @@
 "use client";
-import {  Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { TombowData } from "@/types";
 import TableArea from "@/components/table-area";
@@ -19,14 +19,16 @@ export const TomboTable: FC<Props> = ({ filterData }) => {
                 <Th>品番</Th>
                 <Th>サイズ</Th>
                 <Th>在庫数</Th>
+                <Th>JANコード</Th>
               </Tr>
             </Thead>
             <Tbody>
               {filterData?.map((data: TombowData, index: number) => (
                 <Tr key={index}>
-                  <Td>{data.品番}</Td>
-                  <Td>{data.サイズ}</Td>
-                  <Td isNumeric>{data.在庫数}</Td>
+                  <Td>{data.productNumber}</Td>
+                  <Td>{data.size}</Td>
+                  <Td isNumeric>{data.stock}</Td>
+                  <Td isNumeric>{data.jan}</Td>
                 </Tr>
               ))}
             </Tbody>

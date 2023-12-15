@@ -1,28 +1,35 @@
-import axios from "axios";
-import { NextResponse } from "next/server";
-import { parse } from "papaparse";
+import { prisma } from "@/libs/prisma";
+import { TombowData } from "@/types";
+import { format } from "date-fns";
+import { NextRequest, NextResponse } from "next/server";
 
-const fileParser = (csvData: string) => {
-  const result = parse(csvData, { header: true });
-  return result.data as csvImport[];
-};
+export async function POST(req: NextRequest) {
+  const { body } = await req.json();
 
-type csvImport = {
-  品番: string;
-  色: string;
-  サイズ略称: string;
-  在庫数: string;
-};
-
-export async function GET() {
-  const url =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyLWlLD4SzvtlsqjWl7ilXLDFo3bNxm2hltR8fw1K3A-4X4OgJGhlL5FI7ey9vJuOhcJUohvZpgNj0/pub?gid=1777356817&single=true&output=csv";
-  const res = await axios.get(url);
-  const datalist = fileParser(await res.data);
-  const result = datalist.map((data: csvImport) => ({
-    品番: data.品番 + "-" + data.色,
-    サイズ: data.サイズ略称,
-    在庫数: data.在庫数,
+  const newBody = body.map((value: TombowData, idx: number) => ({
+    ...value,
+    jan: String(value.jan),
+    row: idx,
+    createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
-  return NextResponse.json(result, { status: 200 });
+
+  await prisma.tombow.deleteMany();
+  return await Promise.all(
+    newBody.map(
+      async (data: TombowData) =>
+        await prisma.tombow.create({
+          data: { ...data },
+        })
+    )
+  )
+    .then(async () => {
+      console.log("トンボ 成功");
+      await prisma.$disconnect();
+      return NextResponse.json("result", { status: 201 });
+    })
+    .catch(async (err) => {
+      console.error(err);
+      await prisma.$disconnect();
+      return NextResponse.json("失敗", { status: 500 });
+    });
 }

@@ -7,6 +7,22 @@ export const useCsvUpload = () => {
   const setIsLoading = useStore((state) => state.setIsLoading);
   const [resultList, setResultList] = useState<string[]>([]);
 
+  const tombowCsvRegister = async (csvFile: string[][] | null) => {
+    if (!csvFile) return;
+    setIsLoading(true);
+    csvFile.shift();
+    const body = csvFile.map((csv) => ({
+      jan: Number(csv[4]),
+      productNumber: csv[0],
+      color: csv[1],
+      size: csv[2],
+      stock: Number(csv[3]),
+    }));
+    await fetchPost({ body, url: "/api/tombow" });
+    setResultList((prev) => [...prev, "トンボ 登録しました。"]);
+    setIsLoading(false);
+  };
+
   const seleryCsvRegister = async (csvFile: string[][] | null) => {
     if (!csvFile) return;
     setIsLoading(true);
@@ -131,6 +147,7 @@ export const useCsvUpload = () => {
   };
 
   return {
+    tombowCsvRegister,
     seleryCsvRegister,
     bonmaxCsvRegister,
     servoCsvRegister,

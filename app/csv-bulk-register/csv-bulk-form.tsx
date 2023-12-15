@@ -9,6 +9,7 @@ const CsvBulkForm = () => {
   const isLoading = useStore((state) => state.isLoading);
   const {
     resultList,
+    tombowCsvRegister,
     chikumaCsvRegister,
     seleryCsvRegister,
     chitoseCsvRegister,
@@ -53,6 +54,9 @@ const CsvBulkForm = () => {
       let csvString = csvFile?.toString().split(/\r?\n/);
       let csvArray = csvString.map((a) => a.replace(/(\")/g, "").split(","));
 
+      if (regTest("^zaikoDownload", file.name)) {
+        await tombowCsvRegister(csvArray);
+      }
       if (regTest("^前日在庫データ", file.name)) {
         await chikumaCsvRegister(csvArray);
       }

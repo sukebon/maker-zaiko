@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
     ...value,
     jan: String(value.jan),
     row: idx,
+    productNumber: value.productNumber?.trim(),
     createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 

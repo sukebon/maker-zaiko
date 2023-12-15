@@ -13,7 +13,7 @@ export const useCsvUpload = () => {
     csvFile.shift();
     const body = csvFile.map((csv) => ({
       jan: Number(csv[4]),
-      productNumber: csv[0],
+      productNumber: csv[0].trim() + "-" + csv[1],
       color: csv[1],
       size: csv[2],
       stock: Number(csv[3]),

@@ -30,6 +30,7 @@ const getData = async () => {
   return data;
 };
 
+
 export default async function Tombow() {
   const catalog = await getCatalog("pecptt28f");
   const data = await getData();

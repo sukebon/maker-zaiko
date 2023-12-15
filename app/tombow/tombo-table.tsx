@@ -26,7 +26,7 @@ export const TomboTable: FC<Props> = ({ filterData }) => {
               {filterData?.map((data: TombowData, index: number) => (
                 <Tr key={index}>
                   <Td>{data.productNumber}</Td>
-                  <Td>{data.size}</Td>
+                  <Td textAlign="center">{data.size}</Td>
                   <Td isNumeric>{data.stock}</Td>
                   <Td isNumeric>{data.jan}</Td>
                 </Tr>

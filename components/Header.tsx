@@ -35,7 +35,7 @@ export const Header: FC = () => {
       <div className="w-full hidden lg:flex gap-3 justify-end mx-3">
         <div>
           {isAuthority && (
-            <Link href="/csv-register">
+            <Link href="/csv-bulk-register">
               <button className="text-white">在庫登録</button>
             </Link>
           )}

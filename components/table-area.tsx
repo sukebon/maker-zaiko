@@ -12,7 +12,7 @@ const TableArea: FC<Props> = ({ children, maxW = "900px" }) => {
       <Box
         overflowX="auto"
         position="relative"
-        maxW={maxW}
+        maxW={{ base: "850px", "2xl": maxW }}
         maxH="calc(100vh - 230px)"
       >
         {children}

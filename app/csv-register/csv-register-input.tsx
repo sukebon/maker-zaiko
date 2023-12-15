@@ -25,7 +25,7 @@ const CsvRegisterInput: FC<Props> = ({
     }
 
     const file = e.target.files[0];
-    const regex = new RegExp(`${fileName}*`);
+    const regex = new RegExp(`^${fileName}*`);
     if (regex.test(file.name)) {
       setFileNameChecker(false);
     } else {

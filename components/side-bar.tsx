@@ -8,7 +8,7 @@ const SideBar = () => {
   const pathname = usePathname();
   return (
     <div
-      className="w-[calc(300px)] bg-blue-900 hidden lg:block"
+      className="min-w-[calc(250px)] bg-blue-900 hidden lg:block"
       style={{
         minHeight: "calc(100vh)",
         boxShadow: "1px 0 5px 2px rgba(0,0,0,0.2)",

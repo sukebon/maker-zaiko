@@ -12,7 +12,7 @@ export const ChitoseTable: FC<Props> = ({ filterData }) => {
   return (
     <>
       {filterData.length > 0 && (
-        <TableArea maxW="1250px">
+        <TableArea maxW="1300px">
           <Table size="sm" variant="simple" bg="white">
             <Thead position="sticky" top={0} zIndex="docked" bg="white">
               <Tr>

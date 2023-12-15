@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
       });
     })
   ).then(async () => {
-    console.log("成功");
+    console.log("ボンマックス 成功");
     await prisma.$disconnect();
     return NextResponse.json("result", { status: 201 });
   }).catch(async (err) => {

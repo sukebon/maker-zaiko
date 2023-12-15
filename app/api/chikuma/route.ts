@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     })
   )
     .then(async () => {
-      console.log("成功");
+      console.log("チクマ 成功");
       await prisma.$disconnect();
       return NextResponse.json("result", { status: 201 });
     })

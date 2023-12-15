@@ -17,12 +17,9 @@ export type TombowData = {
   jan: string | null;
   productNumber: string | null;
   size: string | null;
+  color: string | null;
   stock: number | null;
-  // 品番: string;
-  // //  色:string;
-  // サイズ: string;
-  // 在庫数: string;
-};
+}
 
 export type ChikumaData = {
   id: string;

@@ -17,18 +17,18 @@ export const TomboTable: FC<Props> = ({ filterData }) => {
             <Thead position="sticky" top={0} zIndex="docked" bg="white">
               <Tr>
                 <Th>品番</Th>
+                <Th>色</Th>
                 <Th>サイズ</Th>
                 <Th>在庫数</Th>
-                <Th>JANコード</Th>
               </Tr>
             </Thead>
             <Tbody>
               {filterData?.map((data: TombowData, index: number) => (
                 <Tr key={index}>
                   <Td>{data.productNumber}</Td>
+                  <Td isNumeric>{data.color}</Td>
                   <Td textAlign="center">{data.size}</Td>
                   <Td isNumeric>{data.stock}</Td>
-                  <Td isNumeric>{data.jan}</Td>
                 </Tr>
               ))}
             </Tbody>

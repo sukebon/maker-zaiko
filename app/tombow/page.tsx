@@ -21,6 +21,11 @@ const getData = async () => {
     orderBy: {
       row: "asc",
     },
+    where: {
+      productNumber: {
+        notIn: [""],
+      },
+    },
   });
   return data;
 };

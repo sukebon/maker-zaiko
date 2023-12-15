@@ -6,7 +6,6 @@ import React, { useState } from "react";
 const CsvBulkForm = () => {
   const [fileUploads, setFileUploads] = useState<File[] | null>(null);
   const setIsLoading = useStore((state) => state.setIsLoading);
-  const isLoading = useStore((state) => state.isLoading);
   const {
     resultList,
     tombowCsvRegister,
@@ -54,27 +53,16 @@ const CsvBulkForm = () => {
       let csvString = csvFile?.toString().split(/\r?\n/);
       let csvArray = csvString.map((a) => a.replace(/(\")/g, "").split(","));
 
-      if (regTest("^zaikoDownload", file.name)) {
+      if (regTest("^zaikoDownload", file.name))
         await tombowCsvRegister(csvArray);
-      }
-      if (regTest("^前日在庫データ", file.name)) {
+      if (regTest("^前日在庫データ", file.name))
         await chikumaCsvRegister(csvArray);
-      }
-      if (regTest("^SNDZAIKO9", file.name)) {
-        await seleryCsvRegister(csvArray);
-      }
-      if (regTest("^hinban", file.name)) {
-        await chitoseCsvRegister(csvArray);
-      }
-      if (regTest("^zaiko_", file.name)) {
-        await servoCsvRegister(csvArray);
-      }
-      if (regTest("^在庫データ", file.name)) {
-        await karseeCsvRegister(csvArray);
-      }
-      if (regTest("^BM_DMHK-ZAIKO", file.name)) {
+      if (regTest("^BM_DMHK-ZAIKO", file.name))
         await bonmaxCsvRegister(csvArray);
-      }
+      if (regTest("^SNDZAIKO9", file.name)) await seleryCsvRegister(csvArray);
+      if (regTest("^hinban", file.name)) await chitoseCsvRegister(csvArray);
+      if (regTest("^zaiko_", file.name)) await servoCsvRegister(csvArray);
+      if (regTest("^在庫データ", file.name)) await karseeCsvRegister(csvArray);
     });
   };
 
